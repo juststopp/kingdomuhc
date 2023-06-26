@@ -1,0 +1,4 @@
+name: KingdomUHC
+version: '${project.version}'
+main: fr.juststop.dev.kingdomuhc.KingdomUHC
+api-version: 1.8.8
