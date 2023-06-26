@@ -1,8 +1,8 @@
 package fr.juststop.dev.kingdomuhc.utils.inventory.inv;
 
-import azuriamc.azuriamod.utils.inventory.Registre;
-import azuriamc.azuriamod.utils.inventory.handlers.InventoryClickHandler;
-import azuriamc.azuriamod.utils.inventory.item.InventoryItem;
+import fr.juststop.dev.kingdomuhc.utils.inventory.Registre;
+import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.InventoryClickHandler;
+import fr.juststop.dev.kingdomuhc.utils.inventory.item.InventoryItem;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

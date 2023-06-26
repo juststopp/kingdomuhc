@@ -1,11 +1,11 @@
 package fr.juststop.dev.kingdomuhc.listeners.inventories;
 
-import azuriamc.azuriamod.utils.inventory.Registre;
-import azuriamc.azuriamod.utils.inventory.handlers.CustomItemClickHandler;
-import azuriamc.azuriamod.utils.inventory.handlers.CustomItemInteractHandler;
-import azuriamc.azuriamod.utils.inventory.inv.CustomInventory;
-import azuriamc.azuriamod.utils.inventory.item.CustomInventoryItem;
-import azuriamc.azuriamod.utils.inventory.item.InventoryItem;
+import fr.juststop.dev.kingdomuhc.utils.inventory.Registre;
+import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemClickHandler;
+import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemInteractHandler;
+import fr.juststop.dev.kingdomuhc.utils.inventory.inv.CustomInventory;
+import fr.juststop.dev.kingdomuhc.utils.inventory.item.CustomInventoryItem;
+import fr.juststop.dev.kingdomuhc.utils.inventory.item.InventoryItem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

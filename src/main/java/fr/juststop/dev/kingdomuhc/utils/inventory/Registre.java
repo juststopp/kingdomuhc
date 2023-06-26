@@ -1,7 +1,7 @@
 package fr.juststop.dev.kingdomuhc.utils.inventory;
 
-import azuriamc.azuriamod.utils.inventory.inv.CustomInventory;
-import azuriamc.azuriamod.utils.inventory.item.CustomInventoryItem;
+import fr.juststop.dev.kingdomuhc.utils.inventory.inv.CustomInventory;
+import fr.juststop.dev.kingdomuhc.utils.inventory.item.CustomInventoryItem;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;

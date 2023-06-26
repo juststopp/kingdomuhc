@@ -1,8 +1,8 @@
 package fr.juststop.dev.kingdomuhc.utils.inventory.item;
 
-import azuriamc.azuriamod.utils.inventory.Registre;
-import azuriamc.azuriamod.utils.inventory.handlers.CustomItemClickHandler;
-import azuriamc.azuriamod.utils.inventory.handlers.CustomItemInteractHandler;
+import fr.juststop.dev.kingdomuhc.utils.inventory.Registre;
+import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemClickHandler;
+import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemInteractHandler;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class CustomInventoryItem extends InventoryItem {

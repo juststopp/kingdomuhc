@@ -1,6 +1,6 @@
 package fr.juststop.dev.kingdomuhc.listeners.inventories;
 
-import azuriamc.azuriamod.utils.inventory.Registre;
+import fr.juststop.dev.kingdomuhc.utils.inventory.Registre;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
