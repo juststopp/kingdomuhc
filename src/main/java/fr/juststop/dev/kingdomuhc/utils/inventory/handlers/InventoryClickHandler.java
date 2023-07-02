@@ -31,6 +31,8 @@ public abstract class InventoryClickHandler {
         public int getRawSlot() { return event.getRawSlot(); }
         public int getSlot() { return event.getSlot(); }
 
+        public InventoryClickEvent getEvent() { return event; }
+
         public boolean isLeftClick() {
             return event.isLeftClick();
         }
@@ -81,6 +83,8 @@ public abstract class InventoryClickHandler {
         public boolean isCancelled() { return event.isCancelled(); }
 
         public void setCancelled(boolean b) { event.setCancelled(b); }
+
+        public PlayerInteractEvent getEvent() { return event; }
 
         @Override
         public boolean equals(Object obj) {

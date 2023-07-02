@@ -6,6 +6,7 @@ import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemInteractHan
 import fr.juststop.dev.kingdomuhc.utils.inventory.inv.CustomInventory;
 import fr.juststop.dev.kingdomuhc.utils.inventory.item.CustomInventoryItem;
 import fr.juststop.dev.kingdomuhc.utils.inventory.item.InventoryItem;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -22,6 +23,11 @@ public class InventoryClick implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         Inventory inventory = event.getClickedInventory();
+
+        if(player.getGameMode() != GameMode.CREATIVE) {
+            event.setCancelled(true);
+            return;
+        }
 
         if(inventory == null || !Registre.isCustomInventory(player.getUniqueId())) return;
 
