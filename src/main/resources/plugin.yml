@@ -2,3 +2,10 @@ name: KingdomUHC
 version: '${project.version}'
 main: fr.juststop.dev.kingdomuhc.KingdomUHC
 api-version: 1.8.8
+commands:
+  kingdom:
+    description: The main command of the plugin.
+    aliases:
+      - ki
+      - kd
+      - king
