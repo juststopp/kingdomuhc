@@ -5,7 +5,6 @@ import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemClickHandler;
 import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemInteractHandler;
 import fr.juststop.dev.kingdomuhc.utils.inventory.item.CustomInventoryItem;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

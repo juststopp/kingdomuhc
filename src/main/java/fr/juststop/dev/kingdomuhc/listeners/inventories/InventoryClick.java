@@ -24,11 +24,6 @@ public class InventoryClick implements Listener {
         Player player = (Player) event.getWhoClicked();
         Inventory inventory = event.getClickedInventory();
 
-        if(player.getGameMode() != GameMode.CREATIVE) {
-            event.setCancelled(true);
-            return;
-        }
-
         if(inventory == null || !Registre.isCustomInventory(player.getUniqueId())) return;
 
         CustomInventory customInventory = Registre.getPlayerInventory(player.getUniqueId());

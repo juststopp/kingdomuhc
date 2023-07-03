@@ -1,6 +1,7 @@
 package fr.juststop.dev.kingdomuhc.listeners;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.items.RolesBook;
 import org.bukkit.ChatColor;
@@ -28,14 +29,20 @@ public class ServerListeners implements Listener {
                     .sendMessage(player);
         }
 
-        KingdomUHC.getInstance().getScoreboardManager().onLogin(player);
+        UhcPlayer uhcPlayer = new UhcPlayer(player);
+        uhcPlayer.onJoin();
 
+        KingdomUHC.getInstance().getGameManager().getPlayers().put(player, uhcPlayer);
+        KingdomUHC.getInstance().getScoreboardManager().onLogin(uhcPlayer.getPlayer());
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
-        KingdomUHC.getInstance().getScoreboardManager().onLogout(player);
+        UhcPlayer uhcPlayer = KingdomUHC.getInstance().getGameManager().getPlayers().remove(player);
+
+        KingdomUHC.getInstance().getScoreboardManager().onLogout(uhcPlayer.getPlayer());
+        uhcPlayer.onQuit();
 
         e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', KingdomUHC.getInstance().getPrefix() + "&c" + player.getName() + " §7vient de quitter la partie."));
     }
