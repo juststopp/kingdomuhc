@@ -44,7 +44,7 @@ public class ScoreboardManager {
         if (scoreboards.containsKey(player.getUniqueId())) {
             return;
         }
-        scoreboards.put(player.getUniqueId(), new PersonalScoreboard(player));
+        scoreboards.put(player.getUniqueId(), new PersonalScoreboard(KingdomUHC.getInstance().getGameManager().getPlayers().get(player)));
     }
 
     public void onLogout(Player player) {

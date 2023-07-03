@@ -1,25 +1,25 @@
 package fr.juststop.dev.kingdomuhc.utils.scoreboard;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
 public class PersonalScoreboard {
-    private Player player;
+    private UhcPlayer uhcPlayer;
     private final UUID uuid;
     private final ObjectiveSign objectiveSign;
 
-    PersonalScoreboard(Player player){
-        this.player = player;
-        uuid = player.getUniqueId();
+    PersonalScoreboard(UhcPlayer uhcPlayer){
+        this.uhcPlayer = uhcPlayer;
+        uuid = uhcPlayer.getPlayer().getUniqueId();
         objectiveSign = new ObjectiveSign("sidebar", "KingdomUHC");
 
         reloadData();
-        objectiveSign.addReceiver(player);
+        objectiveSign.addReceiver(uhcPlayer.getPlayer());
     }
 
     public void reloadData(){}
@@ -28,7 +28,7 @@ public class PersonalScoreboard {
         objectiveSign.setDisplayName(ChatColor.translateAlternateColorCodes('&', KingdomUHC.getInstance().getGameManager().getConfig().name));
 
         objectiveSign.setLine(0, "§1");
-        objectiveSign.setLine(1, "§8︲ §fHost: §e" + KingdomUHC.getInstance().getGameManager().getConfig().HOST.getDisplayName());
+        objectiveSign.setLine(1, "§8︲ §fHost: §e" + (KingdomUHC.getInstance().getGameManager().getConfig().HOST == null ? "§cNon défini" : KingdomUHC.getInstance().getGameManager().getConfig().HOST.getDisplayName()));
         objectiveSign.setLine(2, "§8︲ §fJoueurs: §e" + Bukkit.getOnlinePlayers().stream().filter(player1 -> player1.getGameMode() != GameMode.SPECTATOR).count() + "§6/§e"+KingdomUHC.getInstance().getGameManager().getConfig().SLOTS);
         objectiveSign.setLine(3, "§2");
         objectiveSign.setLine(4, ip);
