@@ -29,8 +29,8 @@ public class Command implements CommandExecutor, TabCompleter {
     public String getPermission() { return permission; }
     public HashMap<String, Command> getSubcommands() { return subcommands; }
 
-    public Command addSubcommand(String name, Command command) {
-        subcommands.put(name, command);
+    public Command addSubcommand(Command command) {
+        subcommands.put(command.name, command);
         return this;
     }
 
