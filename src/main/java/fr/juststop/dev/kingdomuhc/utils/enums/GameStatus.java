@@ -1,4 +1,4 @@
-package fr.juststop.dev.kingdomuhc.managers.game;
+package fr.juststop.dev.kingdomuhc.utils.enums;
 
 public enum GameStatus {
 

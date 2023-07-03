@@ -1,5 +1,6 @@
 package fr.juststop.dev.kingdomuhc.managers.game;
 
+import fr.juststop.dev.kingdomuhc.utils.enums.GameStatus;
 import org.bukkit.entity.Player;
 
 public class GameConfig {
