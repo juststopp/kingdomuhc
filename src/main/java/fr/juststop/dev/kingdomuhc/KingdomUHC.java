@@ -13,6 +13,7 @@ import fr.juststop.dev.kingdomuhc.listeners.inventories.InventoryClick;
 import fr.juststop.dev.kingdomuhc.listeners.inventories.ItemRemoveFromInventoryListeners;
 import fr.juststop.dev.kingdomuhc.managers.game.GameManager;
 import fr.juststop.dev.kingdomuhc.managers.world.WorldManager;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.scoreboard.ScoreboardManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -58,6 +59,8 @@ public final class KingdomUHC extends JavaPlugin {
         worldManager = new WorldManager();
 
         commands = new HashMap<>();
+
+        Language.init();
 
         getLog().log(Level.INFO, "Registering listeners and commands");
         registerListeners();

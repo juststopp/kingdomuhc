@@ -1,0 +1,51 @@
+prefix: "&6Kingdom &8︲&r"
+error_prefix: "&cErreur &8︲&r"
+
+server:
+  events:
+    player:
+      join: "%prefix% &a%player% &7vient de rejoindre la partie."
+      quit: "%prefix% &c%player% &7vient de quitter la partie."
+
+
+game:
+  start: "&aLancement de la partie. &7Ne vous déconnectez pas!"
+  stop: "&cLa partie est terminée, le serveur va bientôt s'arrêter."
+  host:
+    you_are_new: "&7Vous êtes désormais l'&6Host &7de la partie."
+
+format:
+  list_key_value: "&8- &6%key%&7: %value%"
+  list_value: "&8- %6%value%"
+
+commands:
+  not_implemented: "&cCette command n'a pas encore été implémentée."
+  list_subcommands: "&7Voici la liste des sous-commandes pour '&6%name%&7' que &7vous pouvez utiliser:"
+  kingdom:
+    description: "&7Ceci est la commande &6principale &7du mode de jeu. Faîtes &6/kingdom help &7pour voir la liste des commandes."
+    subcommands:
+      help:
+        description: "&7Liste les commandes disponibles."
+        message: "&7Voici la liste des sous-commandes que vous pouvez &7utiliser:"
+      config:
+        description: "&7Permet de voir la &6configuration &7de la partie."
+  world:
+    description: "&7Permet de gérer la génération du monde."
+    message: "&7Voici la liste des commandes utilisables:"
+    subcommands:
+      load:
+        description: "&7Lance la &bpré-génération &7du monde."
+        starting: "&7Lancement de la &bpré-génération &7de la map..."
+        ended: "&7La &bpré-génération &7de la map est terminée."
+      create:
+        description: "&7Permet de générer un nouveau monde pour la partie."
+        sure: "&7Etes vous sûr de vouloir régénérer le monde ?"
+        yes: "&aOui&7, régénérer."
+        subcommands:
+          confirm:
+            description: "&7Confirmer la &arégénération &7du monde."
+            creating: "&7Création du nouveau monde en cours..."
+            created: "&7Le monde a été créé. Voici les actions disponibles:"
+            actions:
+              delete_and_create: "&cSupprimer &7le monde actuel et le &arecréer&7."
+              save_and_load: "&aGarder &7le monde actuel et lancer la &bpré-génération&7."

@@ -2,6 +2,7 @@ package fr.juststop.dev.kingdomuhc.listeners;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.items.RolesBook;
 import org.bukkit.ChatColor;
@@ -16,7 +17,7 @@ public class ServerListeners implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', KingdomUHC.getInstance().getPrefix() + "&a" + player.getName() + " §7vient de rejoindre la partie."));
+        e.setJoinMessage(Language.PLAYER_JOIN.getMessage().replace("%player%", player.getName()));
 
         if(KingdomUHC.getInstance().getGameManager().getConfig().HOST == null && player.isOp()) {
             KingdomUHC.getInstance().getGameManager().getConfig().HOST = player;
@@ -25,7 +26,7 @@ public class ServerListeners implements Listener {
             player.getInventory().setItem(book.getSlot(), book.getItemStack());
 
             new MessageBuilder(KingdomUHC.getInstance().getPrefix())
-                    .addText("§7Vous êtes désormais l'§6Host §7de la partie.")
+                    .addText(Language.GAME_NEW_HOST.getMessage())
                     .sendMessage(player);
         }
 
@@ -44,7 +45,7 @@ public class ServerListeners implements Listener {
         KingdomUHC.getInstance().getScoreboardManager().onLogout(uhcPlayer.getPlayer());
         uhcPlayer.onQuit();
 
-        e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', KingdomUHC.getInstance().getPrefix() + "&c" + player.getName() + " §7vient de quitter la partie."));
+        e.setQuitMessage(Language.PLAYER_QUIT.getMessage().replace("%player%", player.getName()));
     }
 
 }

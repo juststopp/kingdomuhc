@@ -2,6 +2,7 @@ package fr.juststop.dev.kingdomuhc.commands.worldcommand.subcommands.createsubco
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.commands.Command;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -13,12 +14,12 @@ import org.bukkit.entity.Player;
 
 public class ConfirmSubCommand extends Command {
 
-    public ConfirmSubCommand(String name) { super(name, "&7Confirmer la &arégénération &7du monde.", "blastmc.uhc.world.create"); }
+    public ConfirmSubCommand(String name) { super(name, Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_DESC.getMessage(), "blastmc.uhc.world.create"); }
 
     @Override
     public void run(Player player, String[] args) {
         new MessageBuilder(KingdomUHC.getInstance().getPrefix())
-                .addText("&7Création du nouveau monde en cours...")
+                .addText(Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_CREATING.getMessage())
                 .sendMessage(player);
 
         player.teleport(new Location(Bukkit.getWorld("world"), 0, 100, 0));
@@ -32,27 +33,27 @@ public class ConfirmSubCommand extends Command {
         player.teleport(new Location(world, 0, 100, 0));
 
         new MessageBuilder(KingdomUHC.getInstance().getPrefix())
-                .addText("&7Le monde a été créé. Voici les actions disponibles:")
+                .addText(Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_CREATED.getMessage())
                 .sendMessage(player);
 
 
         new MessageBuilder("&8- ")
                 .addClickAndHoverMessage(
-                        "&cSupprimer &7et &arecréer&7.",
+                        Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_ACTIONS_DELETE_AND_CREATE.getMessage(),
                         ClickEvent.Action.RUN_COMMAND,
                         HoverEvent.Action.SHOW_TEXT,
                         "/world create confirm",
-                        "&cSupprimer &7le monde actuel et le &arecréer&7."
+                        Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_ACTIONS_DELETE_AND_CREATE.getMessage()
                 )
                 .sendMessage(player);
 
         new MessageBuilder("&8- ")
                 .addClickAndHoverMessage(
-                        "&aGarder &7et &bcharger&7.",
+                        Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_ACTIONS_SAVE_AND_LOAD.getMessage(),
                         ClickEvent.Action.RUN_COMMAND,
                         HoverEvent.Action.SHOW_TEXT,
                         "/world load",
-                        "&aGarder &7le monde actuel et lancer la &bpré-génération&7."
+                        Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_ACTIONS_SAVE_AND_LOAD.getMessage()
                 )
                 .sendMessage(player);
     }

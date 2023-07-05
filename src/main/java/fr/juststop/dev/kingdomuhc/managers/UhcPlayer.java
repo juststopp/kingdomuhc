@@ -48,7 +48,7 @@ public class UhcPlayer {
 
             @Override
             public void run() {
-                new ActionBar(getActionBarAsString()).sendToPlayer(player);
+                if(getActionBarAsString().length() > 0) new ActionBar(getActionBarAsString()).sendToPlayer(player);
             }
 
         }.runTaskTimer(KingdomUHC.getInstance(), 0L, 20L).getTaskId();

@@ -1,6 +1,7 @@
 package fr.juststop.dev.kingdomuhc.commands;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
@@ -58,10 +59,10 @@ public class Command implements CommandExecutor, TabCompleter {
 
                 if(command == null) {
                     new MessageBuilder(KingdomUHC.getInstance().getPrefix())
-                            .addText("&7Voici la liste des sous-commandes pour \"&6"+this.name+"&7\" que &7vous pouvez utiliser:")
+                            .addText(Language.CMD_LIST_SUBCOMMANDS.getMessage().replace("%name%", this.name))
                             .sendMessage(player);
                     for(Map.Entry<String, Command> set : getSubcommands().entrySet()) {
-                        if(player.hasPermission(set.getValue().permission)) player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8- &6" + set.getKey() + "&7: " + set.getValue().getDescription()));
+                        if(player.hasPermission(set.getValue().permission)) player.sendMessage(Language.FORMAT_LIST_KEY_VALUE.getMessage().replace("%key%", set.getKey()).replace("%value%", set.getValue().getDescription()));
                     }
                     return false;
                 }
@@ -69,15 +70,15 @@ public class Command implements CommandExecutor, TabCompleter {
                 while(true) {
                     if(command.getSubcommand(a[0]) == null) {
                         if(player.hasPermission(this.permission)) command.run(player, a);
-                        else new MessageBuilder(KingdomUHC.getInstance().getPrefix())
-                                .addText("&cVous n'avez pas la permission de faire cette commande.")
+                        else new MessageBuilder(Language.ERROR_PREFIX.getMessage())
+                                .addText(Language.CMD_NOPERM.getMessage())
                                 .sendMessage(player);
                         break;
                     }
 
                     if(!player.hasPermission(command.permission)) {
-                        new MessageBuilder(KingdomUHC.getInstance().getPrefix())
-                                .addText("&cVous n'avez pas la permission de faire cette commande.")
+                        new MessageBuilder(Language.ERROR_PREFIX.getMessage())
+                                .addText(Language.CMD_NOPERM.getMessage())
                                 .sendMessage(player);
                         break;
                     }
