@@ -18,9 +18,9 @@ public class UhcPlayer {
     private List<String> actionBar = new ArrayList<>();
     private int actionBarRunnable;
 
-    private int speedPercentage;
-    private int strengthPercentage;
-    private int resistancePercentage;
+    private double speedPercentage;
+    private double strengthPercentage;
+    private double resistancePercentage;
 
     public UhcPlayer(Player player) {
         this.player = player;
@@ -36,9 +36,9 @@ public class UhcPlayer {
     public Role getRole() { return role; }
     public int getFatigue() { return fatigue; }
 
-    public int getSpeedPercentage() { return speedPercentage; }
-    public int getStrengthPercentage() { return strengthPercentage; }
-    public int getResistancePercentage() { return resistancePercentage; }
+    public double getSpeedPercentage() { return speedPercentage; }
+    public double getStrengthPercentage() { return strengthPercentage; }
+    public double getResistancePercentage() { return resistancePercentage; }
 
     public List<String> getActionBar() { return actionBar; }
     public String getActionBarAsString() { return String.join(" §f§l︲§r ", actionBar); }

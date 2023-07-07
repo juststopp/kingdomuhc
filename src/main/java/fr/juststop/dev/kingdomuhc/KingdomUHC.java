@@ -11,6 +11,7 @@ import fr.juststop.dev.kingdomuhc.commands.worldcommand.subcommands.createsubcom
 import fr.juststop.dev.kingdomuhc.listeners.ServerListeners;
 import fr.juststop.dev.kingdomuhc.listeners.inventories.InventoryClick;
 import fr.juststop.dev.kingdomuhc.listeners.inventories.ItemRemoveFromInventoryListeners;
+import fr.juststop.dev.kingdomuhc.listeners.players.DamagesManager;
 import fr.juststop.dev.kingdomuhc.managers.game.GameManager;
 import fr.juststop.dev.kingdomuhc.managers.world.WorldManager;
 import fr.juststop.dev.kingdomuhc.utils.Language;
@@ -90,6 +91,7 @@ public final class KingdomUHC extends JavaPlugin {
         pm.registerEvents(new ItemRemoveFromInventoryListeners(), this);
 
         pm.registerEvents(new ServerListeners(), this);
+        pm.registerEvents(new DamagesManager(), this);
     }
 
     private void registerCommands() {
