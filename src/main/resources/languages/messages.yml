@@ -19,7 +19,7 @@ format:
   list_value: "&8- %6%value%"
 
 commands:
-  not_implemented: "&cCette command n'a pas encore été implémentée."
+  not_implemented: "&cCette commande n'a pas encore été implémentée."
   list_subcommands: "&7Voici la liste des sous-commandes pour '&6%name%&7' que &7vous pouvez utiliser:"
   kingdom:
     description: "&7Ceci est la commande &6principale &7du mode de jeu. Faîtes &6/kingdom help &7pour voir la liste des commandes."
@@ -49,3 +49,20 @@ commands:
             actions:
               delete_and_create: "&cSupprimer &7le monde actuel et le &arecréer&7."
               save_and_load: "&aGarder &7le monde actuel et lancer la &bpré-génération&7."
+  language:
+    description: "&7Permet de gérer les messages en jeu."
+    subcommands:
+      reload:
+        description: "&7Permet de recharger les messages depuis le fichier de configuration."
+        reloaded: "&7Les messages ont été &achargés&7."
+
+items:
+  roles_book:
+    name: "&eRoles"
+    desc:
+      - "&1"
+      - "&f&l︲ &7Permet de voir la liste des rôles"
+      - "&7présents dans la configuration de la"
+      - "&7partie."
+      - "&2"
+      - "&f&l︲ &e&nClique droit&7: Ouvrir le menu."

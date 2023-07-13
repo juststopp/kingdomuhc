@@ -4,6 +4,8 @@ import fr.juststop.dev.kingdomuhc.commands.Command;
 import fr.juststop.dev.kingdomuhc.commands.kingdomcommand.KingdomCommand;
 import fr.juststop.dev.kingdomuhc.commands.kingdomcommand.subcommands.ConfigSubCommand;
 import fr.juststop.dev.kingdomuhc.commands.kingdomcommand.subcommands.HelpSubCommand;
+import fr.juststop.dev.kingdomuhc.commands.languagecommand.LanguageCommand;
+import fr.juststop.dev.kingdomuhc.commands.languagecommand.subcommands.ReloadSubCommand;
 import fr.juststop.dev.kingdomuhc.commands.worldcommand.WorldCommand;
 import fr.juststop.dev.kingdomuhc.commands.worldcommand.subcommands.LoadSubCommand;
 import fr.juststop.dev.kingdomuhc.commands.worldcommand.subcommands.createsubcommand.CreateSubCommand;
@@ -21,7 +23,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.logging.Level;
@@ -105,6 +106,10 @@ public final class KingdomUHC extends JavaPlugin {
                         .addSubcommand(new ConfirmSubCommand("confirm"))
                 )
                 .addSubcommand(new LoadSubCommand("load"))
+                .register();
+
+        new LanguageCommand("language")
+                .addSubcommand(new ReloadSubCommand("reload"))
                 .register();
     }
 }

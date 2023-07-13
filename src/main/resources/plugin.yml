@@ -14,3 +14,7 @@ commands:
     description: Allow the manipulation of the game world.
     aliases:
       - w
+  language:
+    description: Edits the in-game messages.
+    aliases:
+      - lang

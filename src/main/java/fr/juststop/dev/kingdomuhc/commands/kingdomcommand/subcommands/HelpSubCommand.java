@@ -14,7 +14,7 @@ public class HelpSubCommand extends Command {
 
     @Override
     public void run(Player player, String[] args) {
-        new MessageBuilder(KingdomUHC.getInstance().getPrefix())
+        new MessageBuilder(Language.PREFIX.getMessage())
                 .addText(Language.CMD_KINGDOM_SUB_HELP_MESSAGE.getMessage())
                 .sendMessage(player);
         for(Map.Entry<String, Command> set : KingdomUHC.getInstance().getCommands().get("kingdom").getSubcommands().entrySet()) {

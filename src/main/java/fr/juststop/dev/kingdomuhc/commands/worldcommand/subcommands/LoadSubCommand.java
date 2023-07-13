@@ -14,7 +14,7 @@ public class LoadSubCommand extends Command {
     @Override
     public void run(Player player, String[] args) {
 
-        new MessageBuilder(KingdomUHC.getInstance().getPrefix())
+        new MessageBuilder(Language.PREFIX.getMessage())
                 .addText(Language.CMD_WORLD_SUB_LOAD_STARTING.getMessage())
                 .sendMessage(player);
 

@@ -2,10 +2,14 @@ package fr.juststop.dev.kingdomuhc.utils;
 
 import de.leonhard.storage.Yaml;
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 public enum Language {
 
@@ -46,7 +50,14 @@ public enum Language {
 
     CMD_WORLD_SUB_LOAD_DESC("commands.world.subcommands.load.description"),
     CMD_WORLD_SUB_LOAD_STARTING("commands.world.subcommands.load.starting"),
-    CMD_WORLD_SUB_LOAD_ENDED("commands.world.subcommands.load.ended");
+    CMD_WORLD_SUB_LOAD_ENDED("commands.world.subcommands.load.ended"),
+
+    CMD_LANGUAGE_DESC("commands.language.description"),
+    CMD_LANGUAGE_SUB_RELOAD_DESC("commands.language.subcommands.reload.descrpition"),
+    CMD_LANGUAGE_SUB_RELOAD_RELOADED("commands.language.subcommands.reload.reloaded"),
+
+    ITEM_ROLES_BOOK_NAME("items.roles_book.name"),
+    ITEM_ROLES_BOOK_DESC("items.roles_book.desc");
 
     public static void init() {
         try {
@@ -59,11 +70,24 @@ public enum Language {
 
             Yaml languageYaml = new Yaml("messages", "plugins/KingdomUHC/languages");
             for(Language message : Language.values()) {
-                String newMessage = languageYaml.getOrDefault(message.path, "&7Desription \"&c"+message.path+"&7\"introuvable.");
-                newMessage = newMessage.replace("%prefix%", PREFIX.message);
-                newMessage = newMessage.replace("%error_prefix%", ERROR_PREFIX.message);
+                Object newMessage = languageYaml.getOrDefault(message.path, "&7Desription \"&c"+message.path+"&7\"introuvable.");
 
-                message.message = ChatColor.translateAlternateColorCodes('&', newMessage);
+                if(newMessage instanceof String) {
+                    newMessage = newMessage.toString().replace("%prefix%", PREFIX.message.toString());
+                    newMessage = newMessage.toString().replace("%error_prefix%", ERROR_PREFIX.message.toString());
+
+                    message.message = ChatColor.translateAlternateColorCodes('&', newMessage.toString());
+                } else {
+                    List<String> finalMessage = new ArrayList<>();
+                    for(String m : (List<String>) newMessage) {
+                        m = m.replace("%prefix%", PREFIX.message.toString());
+                        m = m.replace("%error_prefix%", ERROR_PREFIX.message.toString());
+
+                        finalMessage.add(ChatColor.translateAlternateColorCodes('&', m));
+                    }
+
+                    message.message = finalMessage;
+                }
             }
         } catch(Exception e) {
             e.printStackTrace();
@@ -72,14 +96,16 @@ public enum Language {
     }
 
     private final String path;
-    private String message;
+    private Object message;
 
     Language(String path) {
         this.path = path;
         this.message = "not loaded";
     }
 
-    public String getMessage() { return message; }
+    public String getMessage() { return message.toString(); }
+
+    public String[] getAsLore() { return ((List<String>) message).toArray(new String[0]); }
 
     public static String[] splitLore(String lore) {
         return lore.split("\n");

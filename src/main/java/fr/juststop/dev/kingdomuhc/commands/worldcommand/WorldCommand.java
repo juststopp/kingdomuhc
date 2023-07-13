@@ -14,7 +14,7 @@ public class WorldCommand extends Command {
 
     @Override
     public void run(Player player, String[] args) {
-        new MessageBuilder(KingdomUHC.getInstance().getPrefix())
+        new MessageBuilder(Language.PREFIX.getMessage())
                 .addText(Language.CMD_WORLD_MSG.getMessage())
                 .sendMessage(player);
         for(Map.Entry<String, Command> set : KingdomUHC.getInstance().getCommands().get("world").getSubcommands().entrySet()) {

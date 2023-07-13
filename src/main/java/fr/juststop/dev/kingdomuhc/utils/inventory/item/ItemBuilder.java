@@ -8,6 +8,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemBuilder {
@@ -38,6 +39,18 @@ public class ItemBuilder {
 
         ItemMeta meta = itemStack.getItemMeta();
         meta.setLore(lore);
+        itemStack.setItemMeta(meta);
+
+        return this;
+    }
+
+    public ItemBuilder addLoreLines(String[] lines) {
+        for(String line : lines) {
+            lore.add(line);
+        }
+
+        ItemMeta meta = itemStack.getItemMeta();
+        meta.setLore(Arrays.asList(lines));
         itemStack.setItemMeta(meta);
 
         return this;

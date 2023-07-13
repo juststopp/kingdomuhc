@@ -14,7 +14,7 @@ public class CreateSubCommand extends Command {
 
     @Override
     public void run(Player player, String[] args) {
-        new MessageBuilder(KingdomUHC.getInstance().getPrefix())
+        new MessageBuilder(Language.PREFIX.getMessage())
                 .addText(Language.CMD_WORLD_SUB_CREATE_SURE.getMessage())
                 .addClickAndHoverMessage(Language.CMD_WORLD_SUB_CREATE_YES.getMessage(), ClickEvent.Action.RUN_COMMAND, HoverEvent.Action.SHOW_TEXT, "/world create confirm", Language.CMD_WORLD_SUB_CREATE_YES.getMessage())
                 .sendMessage(player);
