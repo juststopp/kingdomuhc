@@ -2,9 +2,9 @@ package fr.juststop.dev.kingdomuhc.utils.enums;
 
 public enum Camps {
 
-    QIN("Qin", Colors.LIGHT_BLUE),
+    QIN("Qin", Colors.GREEN),
     ZHAO("Zhao", Colors.RED),
-    Chu("Chu", Colors.YELLOW),
+    CHU("Chu", Colors.YELLOW),
     HAN("Han", Colors.ORANGE),
     WEI("Wei", Colors.PURPLE),
     QI("Qi", Colors.PINK),

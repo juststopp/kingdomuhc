@@ -1,17 +1,18 @@
 package fr.juststop.dev.kingdomuhc.listeners;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.items.qin.rishin.CommandantDe100Hommes;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
-import fr.juststop.dev.kingdomuhc.roles.Role;
+import fr.juststop.dev.kingdomuhc.roles.qin.RiShin;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
-import fr.juststop.dev.kingdomuhc.utils.enums.Camps;
-import fr.juststop.dev.kingdomuhc.utils.items.RolesBook;
-import org.bukkit.ChatColor;
+import fr.juststop.dev.kingdomuhc.items.waiting.RolesBook;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ServerListeners implements Listener {
@@ -35,6 +36,13 @@ public class ServerListeners implements Listener {
         UhcPlayer uhcPlayer = new UhcPlayer(player);
         uhcPlayer.onJoin();
 
+        RiShin role = new RiShin();
+        uhcPlayer.setRole(role);
+        KingdomUHC.getInstance().getGameManager().getRoles().add(role);
+
+        CommandantDe100Hommes item = new CommandantDe100Hommes(role);
+        uhcPlayer.getPlayer().getInventory().addItem(item.getItemStack());
+
         KingdomUHC.getInstance().getGameManager().getPlayers().put(player, uhcPlayer);
         KingdomUHC.getInstance().getScoreboardManager().onLogin(uhcPlayer.getPlayer());
     }
@@ -48,6 +56,11 @@ public class ServerListeners implements Listener {
         uhcPlayer.onQuit();
 
         e.setQuitMessage(Language.PLAYER_QUIT.getMessage().replace("%player%", player.getName()));
+    }
+
+    @EventHandler
+    public void onMove(PlayerMoveEvent e) {
+        Bukkit.broadcastMessage(String.valueOf(e.getPlayer().getWalkSpeed()));
     }
 
 }

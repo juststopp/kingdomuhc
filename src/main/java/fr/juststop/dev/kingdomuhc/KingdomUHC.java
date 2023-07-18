@@ -55,14 +55,14 @@ public final class KingdomUHC extends JavaPlugin {
         executorMonoThread = Executors.newScheduledThreadPool(1);
         scheduledExecutorService = Executors.newScheduledThreadPool(16);
 
+        Language.init();
+
         pm = getServer().getPluginManager();
         scoreboardManager = new ScoreboardManager();
         gameManager = new GameManager();
         worldManager = new WorldManager();
 
         commands = new HashMap<>();
-
-        Language.init();
 
         getLog().log(Level.INFO, "Registering listeners and commands");
         registerListeners();

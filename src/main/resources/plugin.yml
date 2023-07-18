@@ -18,3 +18,5 @@ commands:
     description: Edits the in-game messages.
     aliases:
       - lang
+  test:
+    description: Commande de test

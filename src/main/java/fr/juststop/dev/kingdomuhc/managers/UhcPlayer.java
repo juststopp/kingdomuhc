@@ -3,6 +3,7 @@ package fr.juststop.dev.kingdomuhc.managers;
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.roles.Role;
 import fr.juststop.dev.kingdomuhc.utils.ActionBar;
+import fr.juststop.dev.kingdomuhc.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -18,7 +19,7 @@ public class UhcPlayer {
     private List<String> actionBar = new ArrayList<>();
     private int actionBarRunnable;
 
-    private double speedPercentage;
+    private int speedPercentage;
     private double strengthPercentage;
     private double resistancePercentage;
 
@@ -36,7 +37,7 @@ public class UhcPlayer {
     public Role getRole() { return role; }
     public int getFatigue() { return fatigue; }
 
-    public double getSpeedPercentage() { return speedPercentage; }
+    public int getSpeedPercentage() { return speedPercentage; }
     public double getStrengthPercentage() { return strengthPercentage; }
     public double getResistancePercentage() { return resistancePercentage; }
 
@@ -61,7 +62,7 @@ public class UhcPlayer {
     public void addFatigue(int fatigue) {
         if(this.fatigue + fatigue >= 100) {
             this.fatigue = 100;
-            /* this.role.triggerFatigue100(); */
+            this.role.triggerFatigue100();
         } else this.fatigue += fatigue;
     }
 
@@ -72,7 +73,10 @@ public class UhcPlayer {
 
     public void clearActionBar() { this.actionBar.clear(); }
 
-    public void setSpeedPercentage(int percentage) { this.speedPercentage = percentage; }
-    public void setStrengthPercentage(int percentage) { this.strengthPercentage = percentage; }
-    public void setResistancePercentage(int percentage) { this.resistancePercentage = percentage; }
+    public void setSpeedPercentage(int percentage) {
+        this.speedPercentage = percentage;
+        this.player.setWalkSpeed(0.2F + (((float) percentage / 100F) * 0.2F));
+    }
+    public void setStrengthPercentage(double percentage) { this.strengthPercentage = percentage; }
+    public void setResistancePercentage(double percentage) { this.resistancePercentage = percentage; }
 }

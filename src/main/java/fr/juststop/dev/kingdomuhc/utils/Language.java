@@ -56,8 +56,21 @@ public enum Language {
     CMD_LANGUAGE_SUB_RELOAD_DESC("commands.language.subcommands.reload.descrpition"),
     CMD_LANGUAGE_SUB_RELOAD_RELOADED("commands.language.subcommands.reload.reloaded"),
 
+    ITEM_ACTIVATED("items.activated"),
+    ITEM_FINISHED("items.finished"),
+    ITEM_NOT_YOURS("items.not_yours"),
+
     ITEM_ROLES_BOOK_NAME("items.roles_book.name"),
-    ITEM_ROLES_BOOK_DESC("items.roles_book.desc");
+    ITEM_ROLES_BOOK_DESC("items.roles_book.desc"),
+    ITEM_SHIN_100_HOMMES_NAME("items.roles.ri_shin.100hommes.name"),
+    ITEM_SHIN_100_HOMMES_DESC("items.roles.ri_shin.100hommes.desc"),
+
+    GUI_LIST_ROLES_NAME("gui.list_roles.name"),
+    GUI_NEXT_PAGE("gui.next_page"),
+
+    ROLES_QIN_SHIN_NAME("roles.qin.shin.name"),
+    ROLES_QIN_SHIN_LONG_DESC("roles.qin.shin.long_desc"),
+    ROLES_QIN_SHIN_SHORT_DESC("roles.qin.shin.short_desc");
 
     public static void init() {
         try {
@@ -105,7 +118,9 @@ public enum Language {
 
     public String getMessage() { return message.toString(); }
 
-    public String[] getAsLore() { return ((List<String>) message).toArray(new String[0]); }
+    public String[] getAsLore() {
+        return ((List<String>) message).toArray(new String[0]);
+    }
 
     public static String[] splitLore(String lore) {
         return lore.split("\n");

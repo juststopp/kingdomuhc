@@ -1,5 +1,5 @@
-prefix: "&6Kingdom &8︲&r"
-error_prefix: "&cErreur &8︲&r"
+prefix: "&6Kingdom &8︲ &r"
+error_prefix: "&cErreur &8︲ &r"
 
 server:
   events:
@@ -22,7 +22,7 @@ commands:
   not_implemented: "&cCette commande n'a pas encore été implémentée."
   list_subcommands: "&7Voici la liste des sous-commandes pour '&6%name%&7' que &7vous pouvez utiliser:"
   kingdom:
-    description: "&7Ceci est la commande &6principale &7du mode de jeu. Faîtes &6/kingdom help &7pour voir la liste des commandes."
+    description: "&7Ceci est la commande &6principale &7du mode de jeu. &7Faîtes &6/kingdom help &7pour voir la liste des commandes."
     subcommands:
       help:
         description: "&7Liste les commandes disponibles."
@@ -57,6 +57,9 @@ commands:
         reloaded: "&7Les messages ont été &achargés&7."
 
 items:
+  activated: "&7Vous avez &aactivé &7votre pouvoir \"%item_name%&7\"."
+  finished: "&7Votre pouvoir \"%item_name%&7\" vient de se &cterminer&7."
+  not_yours: "&cVous ne pouvez pas utiliser cet item."
   roles_book:
     name: "&eRoles"
     desc:
@@ -66,3 +69,34 @@ items:
       - "&7partie."
       - "&2"
       - "&f&l︲ &e&nClique droit&7: Ouvrir le menu."
+  roles:
+    ri_shin:
+      100hommes:
+        name: "&aCommandant de 100 hommes"
+        desc:
+          - "&1"
+          - "&f&l︲ &7Ajoute &B20% &7de &bSpeed &7pendant"
+          - "&a20 &7secondes"
+          - "&2"
+          - "&f&l︲ &e&nClique droit&7: Activer le pouvoir"
+
+roles:
+  qin:
+    shin:
+      name: "Ri Shin"
+      long_desc: "&cDescription introuvable."
+      short_desc:
+        - "&1"
+        - "&f&l︲ &7Camp: &aQin"
+        - "&f&l︲ &7Statut: &eGénéral"
+        - "&f&l︲ &7Paliers:"
+        - "&8- &7Palier &a1&7: &e5 points"
+        - "&8- &7Palier &a2&7: &610 points"
+        - "&8- &7Palier &a3&7: &615 points"
+        - "&8- &7Palier &a4&7: &c20 points"
+        - "&8- &7Palier &a5&7: &c30 points"
+
+gui:
+  next_page: "&cPage suivante"
+  list_roles:
+    name: "&eListe des roles"
