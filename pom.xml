@@ -76,6 +76,11 @@
             <systemPath>${project.basedir}/src/main/resources/spigot.jar</systemPath>
         </dependency>
         <dependency>
+            <groupId>xyz.xenondevs</groupId>
+            <artifactId>particle</artifactId>
+            <version>1.8.3</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.simplix-softworks</groupId>
             <artifactId>SimplixStorage</artifactId>
             <version>3.2.6</version>
