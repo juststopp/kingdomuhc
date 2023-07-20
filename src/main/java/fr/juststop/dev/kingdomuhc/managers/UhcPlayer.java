@@ -4,12 +4,16 @@ import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.roles.Role;
 import fr.juststop.dev.kingdomuhc.utils.ActionBar;
 import fr.juststop.dev.kingdomuhc.utils.Utils;
+import fr.juststop.dev.kingdomuhc.utils.enums.Colors;
+import fr.juststop.dev.kingdomuhc.utils.enums.ParticlePlace;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UhcPlayer {
 
@@ -17,11 +21,12 @@ public class UhcPlayer {
     private Role role;
     private int fatigue;
     private List<String> actionBar = new ArrayList<>();
+    private HashMap<ParticlePlace, Colors> particles = new HashMap<>();
     private int actionBarRunnable;
 
     private int speedPercentage;
-    private double strengthPercentage;
-    private double resistancePercentage;
+    private int strengthPercentage;
+    private int resistancePercentage;
 
     public UhcPlayer(Player player) {
         this.player = player;
@@ -36,10 +41,11 @@ public class UhcPlayer {
     public Player getPlayer() { return player; }
     public Role getRole() { return role; }
     public int getFatigue() { return fatigue; }
+    public HashMap<ParticlePlace, Colors> getParticles() { return particles; }
 
     public int getSpeedPercentage() { return speedPercentage; }
-    public double getStrengthPercentage() { return strengthPercentage; }
-    public double getResistancePercentage() { return resistancePercentage; }
+    public int getStrengthPercentage() { return strengthPercentage; }
+    public int getResistancePercentage() { return resistancePercentage; }
 
     public List<String> getActionBar() { return actionBar; }
     public String getActionBarAsString() { return String.join(" §f§l︲§r ", actionBar); }
@@ -50,9 +56,13 @@ public class UhcPlayer {
             @Override
             public void run() {
                 if(getActionBarAsString().length() > 0) new ActionBar(getActionBarAsString()).sendToPlayer(player);
+
+                for(Map.Entry<ParticlePlace, Colors> entry : particles.entrySet()) {
+                    ParticlesManager.spawnParticle(player.getLocation(), entry.getKey(), entry.getValue());
+                }
             }
 
-        }.runTaskTimer(KingdomUHC.getInstance(), 0L, 20L).getTaskId();
+        }.runTaskTimer(KingdomUHC.getInstance(), 0L, 1L).getTaskId();
     }
 
     public void onQuit() { Bukkit.getScheduler().cancelTask(this.actionBarRunnable); }
@@ -77,6 +87,6 @@ public class UhcPlayer {
         this.speedPercentage = percentage;
         this.player.setWalkSpeed(0.2F + (((float) percentage / 100F) * 0.2F));
     }
-    public void setStrengthPercentage(double percentage) { this.strengthPercentage = percentage; }
-    public void setResistancePercentage(double percentage) { this.resistancePercentage = percentage; }
+    public void setStrengthPercentage(int percentage) { this.strengthPercentage = percentage; }
+    public void setResistancePercentage(int percentage) { this.resistancePercentage = percentage; }
 }

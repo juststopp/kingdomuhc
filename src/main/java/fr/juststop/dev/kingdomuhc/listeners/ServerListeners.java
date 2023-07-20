@@ -1,6 +1,7 @@
 package fr.juststop.dev.kingdomuhc.listeners;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.items.qin.rishin.CommandantDe1000Hommes;
 import fr.juststop.dev.kingdomuhc.items.qin.rishin.CommandantDe100Hommes;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.roles.qin.RiShin;
@@ -40,7 +41,7 @@ public class ServerListeners implements Listener {
         uhcPlayer.setRole(role);
         KingdomUHC.getInstance().getGameManager().getRoles().add(role);
 
-        CommandantDe100Hommes item = new CommandantDe100Hommes(role);
+        CommandantDe1000Hommes item = new CommandantDe1000Hommes(role);
         uhcPlayer.getPlayer().getInventory().addItem(item.getItemStack());
 
         KingdomUHC.getInstance().getGameManager().getPlayers().put(player, uhcPlayer);
@@ -56,11 +57,6 @@ public class ServerListeners implements Listener {
         uhcPlayer.onQuit();
 
         e.setQuitMessage(Language.PLAYER_QUIT.getMessage().replace("%player%", player.getName()));
-    }
-
-    @EventHandler
-    public void onMove(PlayerMoveEvent e) {
-        Bukkit.broadcastMessage(String.valueOf(e.getPlayer().getWalkSpeed()));
     }
 
 }
