@@ -29,6 +29,16 @@ commands:
         message: "&7Voici la liste des sous-commandes que vous pouvez &7utiliser:"
       config:
         description: "&7Permet de voir la &6configuration &7de la partie."
+      effects:
+        description: "&7Montre la liste des effets du joueur."
+        message:
+          - "&1"
+          - "  &f&l︲ &7Voici vos effets:"
+          - "&2"
+          - "  &f&l︲ &bVitesse&7: &b%speed%% &7(Niveau 1 = 20%)"
+          - "  &f&l︲ &cForce&7: &c%strength%% &7(Niveau 1 = 20%)"
+          - "  &f&l︲ &1Résistance&7: &1%resistance%% &7(Niveau 1 = 20%)"
+          - "&3"
   world:
     description: "&7Permet de gérer la génération du monde."
     message: "&7Voici la liste des commandes utilisables:"
@@ -75,8 +85,17 @@ items:
         name: "&aCommandant de 100 hommes"
         desc:
           - "&1"
-          - "&f&l︲ &7Ajoute &B20% &7de &bSpeed &7pendant"
+          - "&f&l︲ &7Ajoute &b10% &7de &bSpeed &7pendant"
           - "&a20 &7secondes"
+          - "&2"
+          - "&f&l︲ &e&nClique droit&7: Activer le pouvoir"
+      1000hommes:
+        name: "&aCommandant de 1000 hommes"
+        desc:
+          - "&1"
+          - "&f&l︲ &7Ajoute &b20% &7de &bSpeed &7ainsi que"
+          - "&c10% &7de &cForce &7pendant &a1 &7minute et"
+          - "&a30 &7secondes"
           - "&2"
           - "&f&l︲ &e&nClique droit&7: Activer le pouvoir"
 

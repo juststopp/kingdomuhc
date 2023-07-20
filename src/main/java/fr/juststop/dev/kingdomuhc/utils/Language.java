@@ -34,6 +34,8 @@ public enum Language {
     CMD_KINGDOM_SUB_CONFIG_DESC("commands.kingdom.subcommands.config.description"),
     CMD_KINGDOM_SUB_HELP_DESC("commands.kingdom.subcommands.help.description"),
     CMD_KINGDOM_SUB_HELP_MESSAGE("commands.kingdom.subcommands.help.message"),
+    CMD_KINGDOM_SUB_EFFECTS_DESC("commands.kingdom.subcommands.effects.description"),
+    CMD_KINGDOM_SUB_EFFECTS_MESSAGE("commands.kingdom.subcommands.effects.message"),
 
     CMD_WORLD_DESC("commands.world.description"),
     CMD_WORLD_MSG("commands.world.message"),
@@ -62,8 +64,11 @@ public enum Language {
 
     ITEM_ROLES_BOOK_NAME("items.roles_book.name"),
     ITEM_ROLES_BOOK_DESC("items.roles_book.desc"),
+
     ITEM_SHIN_100_HOMMES_NAME("items.roles.ri_shin.100hommes.name"),
     ITEM_SHIN_100_HOMMES_DESC("items.roles.ri_shin.100hommes.desc"),
+    ITEM_SHIN_1000_HOMMES_NAME("items.roles.ri_shin.1000hommes.name"),
+    ITEM_SHIN_1000_HOMMES_DESC("items.roles.ri_shin.1000hommes.desc"),
 
     GUI_LIST_ROLES_NAME("gui.list_roles.name"),
     GUI_NEXT_PAGE("gui.next_page"),
