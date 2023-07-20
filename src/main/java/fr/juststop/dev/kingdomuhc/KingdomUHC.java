@@ -3,6 +3,7 @@ package fr.juststop.dev.kingdomuhc;
 import fr.juststop.dev.kingdomuhc.commands.Command;
 import fr.juststop.dev.kingdomuhc.commands.kingdomcommand.KingdomCommand;
 import fr.juststop.dev.kingdomuhc.commands.kingdomcommand.subcommands.ConfigSubCommand;
+import fr.juststop.dev.kingdomuhc.commands.kingdomcommand.subcommands.EffectsSubCommand;
 import fr.juststop.dev.kingdomuhc.commands.kingdomcommand.subcommands.HelpSubCommand;
 import fr.juststop.dev.kingdomuhc.commands.languagecommand.LanguageCommand;
 import fr.juststop.dev.kingdomuhc.commands.languagecommand.subcommands.ReloadSubCommand;
@@ -99,6 +100,7 @@ public final class KingdomUHC extends JavaPlugin {
         new KingdomCommand("kingdom")
                 .addSubcommand(new ConfigSubCommand("config"))
                 .addSubcommand(new HelpSubCommand("help"))
+                .addSubcommand(new EffectsSubCommand("effects"))
                 .register();
 
         new WorldCommand("world")
