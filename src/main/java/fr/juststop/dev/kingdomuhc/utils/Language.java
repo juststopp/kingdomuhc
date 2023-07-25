@@ -61,6 +61,9 @@ public enum Language {
     ITEM_ACTIVATED("items.activated"),
     ITEM_FINISHED("items.finished"),
     ITEM_NOT_YOURS("items.not_yours"),
+    ITEM_NOT_IN_AREA("items.not_int_area"),
+    ITEM_COOLDOWN("items.cooldown"),
+    ITEM_NO_TARGET("items.no_target"),
 
     ITEM_ROLES_BOOK_NAME("items.roles_book.name"),
     ITEM_ROLES_BOOK_DESC("items.roles_book.desc"),
@@ -69,6 +72,8 @@ public enum Language {
     ITEM_SHIN_100_HOMMES_DESC("items.roles.ri_shin.100hommes.desc"),
     ITEM_SHIN_1000_HOMMES_NAME("items.roles.ri_shin.1000hommes.name"),
     ITEM_SHIN_1000_HOMMES_DESC("items.roles.ri_shin.1000hommes.desc"),
+    ITEM_SHIN_5000_HOMMES_NAME("items.roles.ri_shin.5000hommes.name"),
+    ITEM_SHIN_5000_HOMMES_DESC("items.roles.ri_shin.5000hommes.desc"),
 
     GUI_LIST_ROLES_NAME("gui.list_roles.name"),
     GUI_NEXT_PAGE("gui.next_page"),

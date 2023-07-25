@@ -12,7 +12,7 @@ import org.bukkit.potion.PotionEffectType;
 public class EffectsSubCommand extends Command {
 
     public EffectsSubCommand(String name) {
-        super(name, Language.CMD_KINGDOM_SUB_EFFECTS_DESC.getMessage(), null);
+        super(name, Language.CMD_KINGDOM_SUB_EFFECTS_DESC.getMessage(), "");
     }
 
     @Override

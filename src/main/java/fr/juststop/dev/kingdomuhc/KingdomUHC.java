@@ -16,6 +16,7 @@ import fr.juststop.dev.kingdomuhc.listeners.inventories.InventoryClick;
 import fr.juststop.dev.kingdomuhc.listeners.inventories.ItemRemoveFromInventoryListeners;
 import fr.juststop.dev.kingdomuhc.listeners.players.DamagesManager;
 import fr.juststop.dev.kingdomuhc.managers.game.GameManager;
+import fr.juststop.dev.kingdomuhc.managers.particles.WorldParticlesScheduler;
 import fr.juststop.dev.kingdomuhc.managers.world.WorldManager;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.scoreboard.ScoreboardManager;
@@ -70,6 +71,7 @@ public final class KingdomUHC extends JavaPlugin {
         registerCommands();
 
         worldManager.replaceBiomes();
+        new WorldParticlesScheduler().runTaskTimer(this, 0L, 5L);
 
     }
 

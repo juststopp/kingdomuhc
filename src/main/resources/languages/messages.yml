@@ -70,6 +70,8 @@ items:
   activated: "&7Vous avez &aactivé &7votre pouvoir \"%item_name%&7\"."
   finished: "&7Votre pouvoir \"%item_name%&7\" vient de se &cterminer&7."
   not_yours: "&cVous ne pouvez pas utiliser cet item."
+  not_in_area: "&cCet item n'est utilsable que dans la zone."
+  no_target: "&cVous ne visez personne."
   roles_book:
     name: "&eRoles"
     desc:
@@ -98,6 +100,20 @@ items:
           - "&a30 &7secondes"
           - "&2"
           - "&f&l︲ &e&nClique droit&7: Activer le pouvoir"
+      5000hommes:
+        name: "&aCommandant de 5000 hommes"
+        desc:
+          - "&1"
+          - "&f&l︲ &e&nClique droit&7: Créer une zone de"
+          - "&c20 blocs &7de rayon, dans laquelle le joueur"
+          - "&7ne prend pas de &adégats de chute&7, ainsi"
+          - "que &610% &7de dégats de dos en &cmoins&7."
+          - "&2"
+          - "&f&l︲ &e&nClique gauche&7: Se téléporter dans"
+          - "&7le &6dos &7du joueur &cvisé&7, à une distance"
+          - "&7maximale de &650 blocs&7. &cUniquement dans"
+          - "&cla zone&7."
+
 
 roles:
   qin:

@@ -2,6 +2,7 @@ package fr.juststop.dev.kingdomuhc.listeners.players;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
+import fr.juststop.dev.kingdomuhc.managers.areas.Area;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,6 +21,20 @@ public class DamagesManager implements Listener {
                 && event.getEntity().getType() == EntityType.PLAYER
                 && event.getEntity().getLocation().getY() <= 30
         ) event.setCancelled(true);
+        else if(event.getEntity().getType() == EntityType.PLAYER) {
+
+            UhcPlayer player = KingdomUHC.getInstance().getGameManager().getPlayers().get(event.getEntity());
+
+            if(player.getAreas().size() == 0) return;
+
+            for(Area area : player.getAreas()) {
+                if(player.getPlayer().getLocation().distance(area.getLocation()) <= area.getOptions().radius
+                        && event.getCause() == EntityDamageEvent.DamageCause.FALL
+                        && !area.getOptions().fallDamage
+                ) event.setCancelled(true);
+            }
+
+        }
     }
 
     @EventHandler
@@ -51,6 +66,14 @@ public class DamagesManager implements Listener {
                 }*/
 
                 finalDamages = finalDamages - originalDamages * victim.getResistancePercentage();
+
+                for(Area area : victim.getAreas()) {
+                    if(victim.getPlayer().getLocation().distance(area.getLocation()) <= area.getOptions().radius) {
+                        if(area.getOptions().damageResistanceBackward > 0) {
+                            finalDamages = finalDamages - finalDamages * ( area.getOptions().damageResistanceBackward / 100 );
+                        }
+                    }
+                }
 
                 event.setDamage(finalDamages < 0 ? 0 : finalDamages);
 

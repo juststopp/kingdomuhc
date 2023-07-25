@@ -1,9 +1,10 @@
 package fr.juststop.dev.kingdomuhc.managers;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.managers.areas.Area;
+import fr.juststop.dev.kingdomuhc.managers.particles.ParticlesManager;
 import fr.juststop.dev.kingdomuhc.roles.Role;
 import fr.juststop.dev.kingdomuhc.utils.ActionBar;
-import fr.juststop.dev.kingdomuhc.utils.Utils;
 import fr.juststop.dev.kingdomuhc.utils.enums.Colors;
 import fr.juststop.dev.kingdomuhc.utils.enums.ParticlePlace;
 import org.bukkit.Bukkit;
@@ -21,6 +22,7 @@ public class UhcPlayer {
     private Role role;
     private int fatigue;
     private List<String> actionBar = new ArrayList<>();
+    private List<Area> areas = new ArrayList<>();
     private HashMap<ParticlePlace, Colors> particles = new HashMap<>();
     private int actionBarRunnable;
 
@@ -36,12 +38,14 @@ public class UhcPlayer {
         this.speedPercentage = 0;
         this.strengthPercentage = 0;
         this.resistancePercentage = 0;
+
     }
 
     public Player getPlayer() { return player; }
     public Role getRole() { return role; }
     public int getFatigue() { return fatigue; }
     public HashMap<ParticlePlace, Colors> getParticles() { return particles; }
+    public List<Area> getAreas() { return areas; }
 
     public int getSpeedPercentage() { return speedPercentage; }
     public int getStrengthPercentage() { return strengthPercentage; }

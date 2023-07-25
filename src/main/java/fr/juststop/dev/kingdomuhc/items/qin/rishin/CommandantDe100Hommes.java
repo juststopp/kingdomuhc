@@ -43,6 +43,8 @@ public class CommandantDe100Hommes extends GameItem {
         final int[] speed = {player.getSpeedPercentage()};
         if(isInUse) {
             endPower(player, speed);
+
+            Bukkit.getScheduler().cancelTask(scheduler);
             return;
         }
 
