@@ -1,19 +1,16 @@
 package fr.juststop.dev.kingdomuhc.listeners;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
-import fr.juststop.dev.kingdomuhc.items.qin.rishin.CommandantDe1000Hommes;
-import fr.juststop.dev.kingdomuhc.items.qin.rishin.CommandantDe100Hommes;
+import fr.juststop.dev.kingdomuhc.items.zhao.Force;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
-import fr.juststop.dev.kingdomuhc.roles.qin.RiShin;
+import fr.juststop.dev.kingdomuhc.roles.zhao.BaNanJi;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.items.waiting.RolesBook;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ServerListeners implements Listener {
@@ -37,11 +34,11 @@ public class ServerListeners implements Listener {
         UhcPlayer uhcPlayer = new UhcPlayer(player);
         uhcPlayer.onJoin();
 
-        RiShin role = new RiShin();
+        BaNanJi role = new BaNanJi();
         uhcPlayer.setRole(role);
         KingdomUHC.getInstance().getGameManager().getRoles().add(role);
 
-        CommandantDe1000Hommes item = new CommandantDe1000Hommes(role);
+        Force item = new Force(role);
         uhcPlayer.getPlayer().getInventory().addItem(item.getItemStack());
 
         KingdomUHC.getInstance().getGameManager().getPlayers().put(player, uhcPlayer);

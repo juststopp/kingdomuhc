@@ -2,6 +2,7 @@ package fr.juststop.dev.kingdomuhc.items.waiting;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.roles.Role;
+import fr.juststop.dev.kingdomuhc.utils.Cooldown;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemClickHandler;
@@ -23,7 +24,7 @@ public class RolesBook extends GameItem {
     public RolesBook() {
         super(Language.ITEM_ROLES_BOOK_NAME.getMessage(),
                 Language.ITEM_ROLES_BOOK_DESC.getAsLore(),
-                0,
+                new Cooldown(0),
                 new ItemStack(Material.BOOK),
                 2,
                 null);

@@ -1,6 +1,8 @@
 package fr.juststop.dev.kingdomuhc.roles;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.utils.Language;
+import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.enums.Camps;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -30,16 +32,19 @@ public class Role {
     public String getLongDescription() { return longDescription; }
     public Player getPlayer() { return player; }
 
-    public void setPlayer(Player player) { this.player = player; }
-
-    public void triggerFatigue100() {
-        this.player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 300, 0, true, false));
-        this.player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 300, 0, true, false));
-
-        KingdomUHC.getInstance().getGameManager().getFatiguePlayers().add(this.player);
+    public void setPlayer(Player player) {
+        this.player = player;
+        this.init();
     }
 
     public void handleDay() {};
     public void handleNight() {};
-    public void init() {};
+
+    public void init() {
+        for(String msg : Language.splitLore(longDescription)) {
+            new MessageBuilder(Language.PREFIX.getMessage())
+                    .addText(msg)
+                    .sendMessage(this.getPlayer());
+        }
+    };
 }

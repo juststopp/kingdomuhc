@@ -98,10 +98,10 @@ public class Command implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command cmd, String arg, String[] args) {
 
-        if(args[0].length() == 0 || args.length < 2) return new ArrayList<>(getSubcommands().keySet());
+        if(args[0].isEmpty() || args.length < 2) return new ArrayList<>(getSubcommands().keySet());
 
         return new ArrayList<>(
-                getSubcommand(args[args.length - 2]).getSubcommands().values().size() == 0
+                getSubcommand(args[args.length - 2]).getSubcommands().values().isEmpty()
                         ? getSubcommands().keySet()
                         : getSubcommand(args[args.length - 2]).getSubcommands().keySet()
         );

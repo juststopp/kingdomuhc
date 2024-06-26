@@ -2,8 +2,7 @@ package fr.juststop.dev.kingdomuhc.managers.game;
 
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.roles.Role;
-import fr.juststop.dev.kingdomuhc.roles.qin.RiShin;
-import fr.juststop.dev.kingdomuhc.utils.enums.Camps;
+import fr.juststop.dev.kingdomuhc.roles.zhao.BaNanJi;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -22,8 +21,6 @@ public class GameManager {
         this.players = new HashMap<>();
         this.roles = new ArrayList<>();
         this.fatiguePlayers = new ArrayList<>();
-
-        this.roles.add(new RiShin());
     }
 
     public GameConfig getConfig() { return config; }

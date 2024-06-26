@@ -3,6 +3,7 @@ package fr.juststop.dev.kingdomuhc.utils.items;
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.roles.Role;
+import fr.juststop.dev.kingdomuhc.utils.Cooldown;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemClickHandler;
@@ -12,14 +13,17 @@ import fr.juststop.dev.kingdomuhc.utils.inventory.item.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.function.Consumer;
+import java.util.function.Function;
+
 public class GameItem extends CustomInventoryItem {
 
     private final String name;
     private final String[] description;
-    private final int fatigueUsage;
+    private final Cooldown cooldown;
     private Role roleNeeded;
 
-    public GameItem(String name, String[] description, int fatigueUsage, ItemStack itemStack, int slot, Role roleNeeded) {
+    public GameItem(String name, String[] description, Cooldown cooldown, ItemStack itemStack, int slot, Role roleNeeded) {
         super(new ItemBuilder(itemStack)
                 .setName(name)
                 .addLoreLines(description)
@@ -28,7 +32,7 @@ public class GameItem extends CustomInventoryItem {
 
         this.name = name;
         this.description = description;
-        this.fatigueUsage = fatigueUsage;
+        this.cooldown = cooldown;
         this.roleNeeded = roleNeeded;
     }
 
@@ -48,9 +52,27 @@ public class GameItem extends CustomInventoryItem {
             handler.setCancelled(true);
         }
 
+        if(this.cooldown.isActive()) {
+            new MessageBuilder(Language.PREFIX.getMessage())
+                    .addText(Language.ITEM_COOLDOWN.getMessage().replace("%cooldown%", Long.toString(this.getCooldown().getRemaining())))
+                    .sendMessage(uhcPlayer.getPlayer());
+
+            handler.setCancelled(true);
+        }
+
     };
 
     public String getName() { return name; }
     public String[] getDescription() { return description; }
-    public int getFatigueUsage() { return fatigueUsage; }
+    public Cooldown getCooldown() { return cooldown; }
+
+    public void handleTimer(UhcPlayer player, int duration, Runnable callback) {
+        this.getCooldown().start();
+
+        player.getActionBar().add(this.getName());
+        Bukkit.getScheduler().runTaskLater(KingdomUHC.getInstance(), () -> {
+            player.getActionBar().remove(this.getName());
+            callback.run();
+        }, duration * 20L);
+    }
 }

@@ -20,7 +20,6 @@ public class UhcPlayer {
 
     private final Player player;
     private Role role;
-    private int fatigue;
     private List<String> actionBar = new ArrayList<>();
     private List<Area> areas = new ArrayList<>();
     private HashMap<ParticlePlace, Colors> particles = new HashMap<>();
@@ -33,7 +32,6 @@ public class UhcPlayer {
     public UhcPlayer(Player player) {
         this.player = player;
         this.role = null;
-        this.fatigue = 0;
 
         this.speedPercentage = 0;
         this.strengthPercentage = 0;
@@ -43,7 +41,6 @@ public class UhcPlayer {
 
     public Player getPlayer() { return player; }
     public Role getRole() { return role; }
-    public int getFatigue() { return fatigue; }
     public HashMap<ParticlePlace, Colors> getParticles() { return particles; }
     public List<Area> getAreas() { return areas; }
 
@@ -71,18 +68,9 @@ public class UhcPlayer {
 
     public void onQuit() { Bukkit.getScheduler().cancelTask(this.actionBarRunnable); }
 
-    public void setRole(Role role) { this.role = role; }
-
-    public void addFatigue(int fatigue) {
-        if(this.fatigue + fatigue >= 100) {
-            this.fatigue = 100;
-            this.role.triggerFatigue100();
-        } else this.fatigue += fatigue;
-    }
-
-    public void removeFatigue(int fatigue) {
-        if(this.fatigue - fatigue < 0) this.fatigue = 0;
-        else this.fatigue -= fatigue;
+    public void setRole(Role role) {
+        this.role = role;
+        role.setPlayer(player);
     }
 
     public void clearActionBar() { this.actionBar.clear(); }

@@ -68,19 +68,19 @@ public enum Language {
     ITEM_ROLES_BOOK_NAME("items.roles_book.name"),
     ITEM_ROLES_BOOK_DESC("items.roles_book.desc"),
 
-    ITEM_SHIN_100_HOMMES_NAME("items.roles.ri_shin.100hommes.name"),
-    ITEM_SHIN_100_HOMMES_DESC("items.roles.ri_shin.100hommes.desc"),
-    ITEM_SHIN_1000_HOMMES_NAME("items.roles.ri_shin.1000hommes.name"),
-    ITEM_SHIN_1000_HOMMES_DESC("items.roles.ri_shin.1000hommes.desc"),
-    ITEM_SHIN_5000_HOMMES_NAME("items.roles.ri_shin.5000hommes.name"),
-    ITEM_SHIN_5000_HOMMES_DESC("items.roles.ri_shin.5000hommes.desc"),
+    ITEMS_BANANJI_FORCE_NAME("items.roles.bananji.force.name"),
+    ITEMS_BANANJI_FORCE_DESC("items.roles.bananji.force.desc"),
 
     GUI_LIST_ROLES_NAME("gui.list_roles.name"),
     GUI_NEXT_PAGE("gui.next_page"),
 
     ROLES_QIN_SHIN_NAME("roles.qin.shin.name"),
     ROLES_QIN_SHIN_LONG_DESC("roles.qin.shin.long_desc"),
-    ROLES_QIN_SHIN_SHORT_DESC("roles.qin.shin.short_desc");
+    ROLES_QIN_SHIN_SHORT_DESC("roles.qin.shin.short_desc"),
+
+    ROLES_ZHAO_BANANJI_NAME("roles.zhao.bananji.name"),
+    ROLES_ZHAO_BANANJI_LONG_DESC("roles.zhao.bananji.long_desc"),
+    ROLES_ZHAO_BANANJI_SHORT_DESC("roles.zhao.bananji.short_desc");
 
     public static void init() {
         try {
@@ -93,7 +93,7 @@ public enum Language {
 
             Yaml languageYaml = new Yaml("messages", "plugins/KingdomUHC/languages");
             for(Language message : Language.values()) {
-                Object newMessage = languageYaml.getOrDefault(message.path, "&7Desription \"&c"+message.path+"&7\"introuvable.");
+                Object newMessage = languageYaml.getOrDefault(message.path, "&7Desription \"&c"+message.path+"&7\" introuvable.");
 
                 if(newMessage instanceof String) {
                     newMessage = newMessage.toString().replace("%prefix%", PREFIX.message.toString());

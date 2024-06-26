@@ -1,11 +1,11 @@
-prefix: "&6Kingdom &8︲ &r"
-error_prefix: "&cErreur &8︲ &r"
+prefix: "&6Kingdom &8︲&r"
+error_prefix: "&cErreur &8︲&r"
 
 server:
   events:
     player:
-      join: "%prefix% &a%player% &7vient de rejoindre la partie."
-      quit: "%prefix% &c%player% &7vient de quitter la partie."
+      join: "%prefix%&a%player% &7vient de rejoindre la partie."
+      quit: "%prefix%&c%player% &7vient de quitter la partie."
 
 
 game:
@@ -72,6 +72,7 @@ items:
   not_yours: "&cVous ne pouvez pas utiliser cet item."
   not_in_area: "&cCet item n'est utilsable que dans la zone."
   no_target: "&cVous ne visez personne."
+  cooldown: "&cVous devez attendre &4%cooldown% &cseconde(s)."
   roles_book:
     name: "&eRoles"
     desc:
@@ -82,54 +83,26 @@ items:
       - "&2"
       - "&f&l︲ &e&nClique droit&7: Ouvrir le menu."
   roles:
-    ri_shin:
-      100hommes:
-        name: "&aCommandant de 100 hommes"
+    bananji:
+      force:
+        name: "&cForce"
         desc:
           - "&1"
-          - "&f&l︲ &7Ajoute &b10% &7de &bSpeed &7pendant"
-          - "&a20 &7secondes"
+          - "&f&l︲ &7Obtient les effets &cForce 2"
+          - "&7et &8Slowness 1 &7pendant &a1 &7minute."
           - "&2"
           - "&f&l︲ &e&nClique droit&7: Activer le pouvoir"
-      1000hommes:
-        name: "&aCommandant de 1000 hommes"
-        desc:
-          - "&1"
-          - "&f&l︲ &7Ajoute &b20% &7de &bSpeed &7ainsi que"
-          - "&c10% &7de &cForce &7pendant &a1 &7minute et"
-          - "&a30 &7secondes"
-          - "&2"
-          - "&f&l︲ &e&nClique droit&7: Activer le pouvoir"
-      5000hommes:
-        name: "&aCommandant de 5000 hommes"
-        desc:
-          - "&1"
-          - "&f&l︲ &e&nClique droit&7: Créer une zone de"
-          - "&c20 blocs &7de rayon, dans laquelle le joueur"
-          - "&7ne prend pas de &adégats de chute&7, ainsi"
-          - "que &610% &7de dégats de dos en &cmoins&7."
-          - "&2"
-          - "&f&l︲ &e&nClique gauche&7: Se téléporter dans"
-          - "&7le &6dos &7du joueur &cvisé&7, à une distance"
-          - "&7maximale de &650 blocs&7. &cUniquement dans"
-          - "&cla zone&7."
 
 
 roles:
-  qin:
-    shin:
-      name: "Ri Shin"
+  zhao:
+    bananji:
+      name: "Ba Nan Ji"
       long_desc: "&cDescription introuvable."
       short_desc:
         - "&1"
-        - "&f&l︲ &7Camp: &aQin"
-        - "&f&l︲ &7Statut: &eGénéral"
-        - "&f&l︲ &7Paliers:"
-        - "&8- &7Palier &a1&7: &e5 points"
-        - "&8- &7Palier &a2&7: &610 points"
-        - "&8- &7Palier &a3&7: &615 points"
-        - "&8- &7Palier &a4&7: &c20 points"
-        - "&8- &7Palier &a5&7: &c30 points"
+        - "&f&l︲ &7Camp: &cZhao"
+        - "&f&l︲ &7Statut: &e?"
 
 gui:
   next_page: "&cPage suivante"
