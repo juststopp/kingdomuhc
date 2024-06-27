@@ -1,12 +1,10 @@
 package fr.juststop.dev.kingdomuhc.roles;
 
-import fr.juststop.dev.kingdomuhc.KingdomUHC;
-import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.enums.Camps;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 public class Role {
 
@@ -26,7 +24,8 @@ public class Role {
 
     }
 
-    public String getName() { return camp.getColor().getChatColor() + name; }
+    public String getName() { return name; }
+    public String getColoredName() { return camp.getColor().getChatColor() + name; }
     public Camps getCamp() { return camp; }
     public String[] getShortDescription() { return shortDescription; }
     public String getLongDescription() { return longDescription; }
@@ -34,17 +33,23 @@ public class Role {
 
     public void setPlayer(Player player) {
         this.player = player;
-        this.init();
+        this.init(false);
     }
 
     public void handleDay() {};
     public void handleNight() {};
 
-    public void init() {
-        for(String msg : Language.splitLore(longDescription)) {
-            new MessageBuilder(Language.PREFIX.getMessage())
+    public void init(boolean ignoreEffects) {
+        for(String msg : Language.splitLore(this.getLongDescription())) {
+            new MessageBuilder(new Language("prefix").getMessage())
                     .addText(msg)
                     .sendMessage(this.getPlayer());
+        }
+
+        if(!ignoreEffects) {
+            for(PotionEffect effect : this.getPlayer().getActivePotionEffects()) {
+                this.getPlayer().removePotionEffect(effect.getType());
+            }
         }
     };
 }

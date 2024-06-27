@@ -15,8 +15,8 @@ import org.bukkit.potion.PotionEffectType;
 public class Force extends GameItem {
 
     public Force(Role role) {
-        super(Language.ITEMS_BANANJI_FORCE_NAME.getMessage(),
-                Language.ITEMS_BANANJI_FORCE_DESC.getAsLore(),
+        super(new Language("items.roles.bananji.force.name").getMessage(),
+                new Language("items.roles.bananji.force.desc").getAsList(),
                 new Cooldown(300),
                 new ItemStack(Material.NETHER_STAR),
                 0,

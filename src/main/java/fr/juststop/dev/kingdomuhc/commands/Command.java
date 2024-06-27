@@ -1,9 +1,8 @@
 package fr.juststop.dev.kingdomuhc.commands;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
-import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
-import org.bukkit.ChatColor;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -58,11 +57,11 @@ public class Command implements CommandExecutor, TabCompleter {
                 String[] a = Arrays.copyOfRange(args, 1, arg.length());
 
                 if(command == null) {
-                    new MessageBuilder(KingdomUHC.getInstance().getPrefix())
-                            .addText(Language.CMD_LIST_SUBCOMMANDS.getMessage().replace("%name%", this.name))
+                    new MessageBuilder(new Language("prefix").getMessage())
+                            .addText(new Language("commands.list_subcommands").getMessage().replace("%name%", this.name))
                             .sendMessage(player);
                     for(Map.Entry<String, Command> set : getSubcommands().entrySet()) {
-                        if(player.hasPermission(set.getValue().permission)) player.sendMessage(Language.FORMAT_LIST_KEY_VALUE.getMessage().replace("%key%", set.getKey()).replace("%value%", set.getValue().getDescription()));
+                        if(player.hasPermission(set.getValue().permission)) player.sendMessage(new Language("format.list_key_value").getMessage().replace("%key%", set.getKey()).replace("%value%", set.getValue().getDescription()));
                     }
                     return false;
                 }
@@ -70,15 +69,15 @@ public class Command implements CommandExecutor, TabCompleter {
                 while(true) {
                     if(command.getSubcommand(a[0]) == null) {
                         if(player.hasPermission(this.permission)) command.run(player, a);
-                        else new MessageBuilder(Language.ERROR_PREFIX.getMessage())
-                                .addText(Language.CMD_NOPERM.getMessage())
+                        else new MessageBuilder(new Language("error_prefix").getMessage())
+                                .addText(new Language("commands.no_perm").getMessage())
                                 .sendMessage(player);
                         break;
                     }
 
                     if(!player.hasPermission(command.permission)) {
-                        new MessageBuilder(Language.ERROR_PREFIX.getMessage())
-                                .addText(Language.CMD_NOPERM.getMessage())
+                        new MessageBuilder(new Language("error_prefix").getMessage())
+                                .addText(new Language("commands.no_perm").getMessage())
                                 .sendMessage(player);
                         break;
                     }

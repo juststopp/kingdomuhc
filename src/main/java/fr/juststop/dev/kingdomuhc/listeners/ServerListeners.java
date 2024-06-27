@@ -4,9 +4,9 @@ import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.items.zhao.Force;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.roles.zhao.BaNanJi;
-import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.items.waiting.RolesBook;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +18,7 @@ public class ServerListeners implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        e.setJoinMessage(Language.PLAYER_JOIN.getMessage().replace("%player%", player.getName()));
+        e.setJoinMessage(new Language("server.events.player.join").getMessage().replace("%player%", player.getName()));
 
         if(KingdomUHC.getInstance().getGameManager().getConfig().HOST == null && player.isOp()) {
             KingdomUHC.getInstance().getGameManager().getConfig().HOST = player;
@@ -27,7 +27,7 @@ public class ServerListeners implements Listener {
             player.getInventory().setItem(book.getSlot(), book.getItemStack());
 
             new MessageBuilder(KingdomUHC.getInstance().getPrefix())
-                    .addText(Language.GAME_NEW_HOST.getMessage())
+                    .addText(new Language("game.host.you_are_new").getMessage())
                     .sendMessage(player);
         }
 
@@ -53,7 +53,7 @@ public class ServerListeners implements Listener {
         KingdomUHC.getInstance().getScoreboardManager().onLogout(uhcPlayer.getPlayer());
         uhcPlayer.onQuit();
 
-        e.setQuitMessage(Language.PLAYER_QUIT.getMessage().replace("%player%", player.getName()));
+        e.setQuitMessage(new Language("server.events.player.quit").getMessage().replace("%player%", player.getName()));
     }
 
 }

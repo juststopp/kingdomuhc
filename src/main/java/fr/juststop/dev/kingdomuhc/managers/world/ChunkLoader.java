@@ -1,18 +1,18 @@
 package fr.juststop.dev.kingdomuhc.managers.world;
 
-import com.google.common.base.Strings;
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
-import fr.juststop.dev.kingdomuhc.utils.ActionBar;
+import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.enums.MapStatus;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.Map;
 
 public class ChunkLoader extends BukkitRunnable {
 
@@ -65,11 +65,25 @@ public class ChunkLoader extends BukkitRunnable {
                 }
             }
         }
+
+        for(Map.Entry<Player, UhcPlayer> player: KingdomUHC.getInstance().getGameManager().getPlayers().entrySet()) {
+            player.getValue().getActionBar().remove(getProgressBar(this.percent) + " §7"+new DecimalFormat("###.##").format(this.percent) + "%");
+        }
+
         this.percent = this.currentChunkLoad / this.totalChunkToLoad * 100.0D;
-        new ActionBar(getProgressBar(this.percent) + " §7"+new DecimalFormat("###.##").format(this.percent) + "%").sendToAll();
+
+        for(Map.Entry<Player, UhcPlayer> player: KingdomUHC.getInstance().getGameManager().getPlayers().entrySet()) {
+            player.getValue().getActionBar().add(getProgressBar(this.percent) + " §7"+new DecimalFormat("###.##").format(this.percent) + "%");
+        }
+
         if (this.finished) {
-            Bukkit.broadcastMessage(Language.PREFIX.getMessage() + " " + Language.CMD_WORLD_SUB_LOAD_ENDED.getMessage());
+            Bukkit.broadcastMessage(new Language("prefix").getMessage() + " " + new Language("commands.world.subcommands.load.ended").getMessage());
             KingdomUHC.getInstance().getGameManager().getConfig().MAP_STATUS = MapStatus.LOADED;
+
+            for(Map.Entry<Player, UhcPlayer> player: KingdomUHC.getInstance().getGameManager().getPlayers().entrySet()) {
+                player.getValue().getActionBar().remove(getProgressBar(this.percent) + " §7"+new DecimalFormat("###.##").format(this.percent) + "%");
+            }
+
             cancel();
         }
     }

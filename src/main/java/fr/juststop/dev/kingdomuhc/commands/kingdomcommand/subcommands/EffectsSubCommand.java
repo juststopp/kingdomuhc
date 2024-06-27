@@ -4,7 +4,6 @@ import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.commands.Command;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.utils.Language;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -12,13 +11,13 @@ import org.bukkit.potion.PotionEffectType;
 public class EffectsSubCommand extends Command {
 
     public EffectsSubCommand(String name) {
-        super(name, Language.CMD_KINGDOM_SUB_EFFECTS_DESC.getMessage(), "");
+        super(name, new Language("commands.kingdom.subcommands.effects.description").getMessage(), "");
     }
 
     @Override
     public void run(Player player, String[] args) {
 
-        String[] messages = Language.CMD_KINGDOM_SUB_EFFECTS_MESSAGE.getAsLore();
+        String[] messages = new Language("commands.kingdom.subcommands.effects.message").getAsList();
         UhcPlayer uhcPlayer = KingdomUHC.getInstance().getGameManager().getPlayers().get(player);
 
         int speed = 0;

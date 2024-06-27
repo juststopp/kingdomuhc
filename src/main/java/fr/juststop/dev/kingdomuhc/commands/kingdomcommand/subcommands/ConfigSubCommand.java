@@ -1,19 +1,19 @@
 package fr.juststop.dev.kingdomuhc.commands.kingdomcommand.subcommands;
 
 import fr.juststop.dev.kingdomuhc.commands.Command;
-import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import org.bukkit.entity.Player;
 
 public class ConfigSubCommand extends Command {
 
 
-    public ConfigSubCommand(String name) { super(name, Language.CMD_KINGDOM_SUB_CONFIG_DESC.getMessage(), ""); }
+    public ConfigSubCommand(String name) { super(name, new Language("commands.kingdom.subcommands.config.description").getMessage(), ""); }
 
     @Override
     public void run(Player player, String[] args) {
-        new MessageBuilder(Language.ERROR_PREFIX.getMessage())
-                .addText(Language.CMD_NOT_IMPLEMENTED.getMessage())
+        new MessageBuilder(new Language("error_prefix").getMessage())
+                .addText(new Language("commands.not_implemented").getMessage())
                 .sendMessage(player);
     }
 }

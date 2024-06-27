@@ -1,6 +1,7 @@
 package fr.juststop.dev.kingdomuhc.utils.inventory.item;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -46,7 +47,7 @@ public class ItemBuilder {
 
     public ItemBuilder addLoreLines(String[] lines) {
         for(String line : lines) {
-            lore.add(line);
+            lore.add(ChatColor.translateAlternateColorCodes('&', line));
         }
 
         ItemMeta meta = itemStack.getItemMeta();
@@ -88,7 +89,7 @@ public class ItemBuilder {
     public ItemBuilder setName(String name) {
         ItemMeta meta = itemStack.getItemMeta();
 
-        meta.setDisplayName(name);
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
         itemStack.setItemMeta(meta);
 
         return this;

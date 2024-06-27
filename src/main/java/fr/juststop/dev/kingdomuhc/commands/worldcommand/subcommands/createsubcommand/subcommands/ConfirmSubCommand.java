@@ -2,8 +2,8 @@ package fr.juststop.dev.kingdomuhc.commands.worldcommand.subcommands.createsubco
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.commands.Command;
-import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
+import fr.juststop.dev.kingdomuhc.utils.Language;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import org.bukkit.Bukkit;
@@ -14,12 +14,12 @@ import org.bukkit.entity.Player;
 
 public class ConfirmSubCommand extends Command {
 
-    public ConfirmSubCommand(String name) { super(name, Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_DESC.getMessage(), "blastmc.uhc.world.create"); }
+    public ConfirmSubCommand(String name) { super(name, new Language("commands.world.subcommands.create.subcommands.confirm.description").getMessage(), "blastmc.uhc.world.create"); }
 
     @Override
     public void run(Player player, String[] args) {
-        new MessageBuilder(Language.PREFIX.getMessage())
-                .addText(Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_CREATING.getMessage())
+        new MessageBuilder(new Language("prefix").getMessage())
+                .addText(new Language("commands.world.subcommands.create.subcommands.confirm.creating").getMessage())
                 .sendMessage(player);
 
         player.teleport(new Location(Bukkit.getWorld("world"), 0, 100, 0));
@@ -32,28 +32,28 @@ public class ConfirmSubCommand extends Command {
         );
         player.teleport(new Location(world, 0, 100, 0));
 
-        new MessageBuilder(Language.PREFIX.getMessage())
-                .addText(Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_CREATED.getMessage())
+        new MessageBuilder(new Language("prefix").getMessage())
+                .addText(new Language("commands.world.subcommands.create.subcommands.confirm.created").getMessage())
                 .sendMessage(player);
 
 
         new MessageBuilder("&8- ")
                 .addClickAndHoverMessage(
-                        Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_ACTIONS_DELETE_AND_CREATE.getMessage(),
+                        new Language("commands.world.subcommands.create.subcommands.confirm.actions.delete_and_create").getMessage(),
                         ClickEvent.Action.RUN_COMMAND,
                         HoverEvent.Action.SHOW_TEXT,
                         "/world create confirm",
-                        Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_ACTIONS_DELETE_AND_CREATE.getMessage()
+                        new Language("commands.world.subcommands.create.subcommands.confirm.actions.delete_and_create").getMessage()
                 )
                 .sendMessage(player);
 
         new MessageBuilder("&8- ")
                 .addClickAndHoverMessage(
-                        Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_ACTIONS_SAVE_AND_LOAD.getMessage(),
+                        new Language("commands.world.subcommands.create.subcommands.confirm.actions.save_and_load").getMessage(),
                         ClickEvent.Action.RUN_COMMAND,
                         HoverEvent.Action.SHOW_TEXT,
                         "/world load",
-                        Language.CMD_WORLD_SUB_CREATE_SUB_CONFIRM_ACTIONS_SAVE_AND_LOAD.getMessage()
+                        new Language("commands.world.subcommands.create.subcommands.confirm.actions.save_and_load").getMessage()
                 )
                 .sendMessage(player);
     }
