@@ -16,6 +16,7 @@ import fr.juststop.dev.kingdomuhc.listeners.ServerListeners;
 import fr.juststop.dev.kingdomuhc.listeners.inventories.InventoryClick;
 import fr.juststop.dev.kingdomuhc.listeners.inventories.ItemRemoveFromInventoryListeners;
 import fr.juststop.dev.kingdomuhc.listeners.players.DamagesManager;
+import fr.juststop.dev.kingdomuhc.listeners.players.DeathListener;
 import fr.juststop.dev.kingdomuhc.managers.game.GameManager;
 import fr.juststop.dev.kingdomuhc.managers.particles.WorldParticlesScheduler;
 import fr.juststop.dev.kingdomuhc.managers.world.WorldManager;
@@ -97,6 +98,7 @@ public final class KingdomUHC extends JavaPlugin {
 
         pm.registerEvents(new ServerListeners(), this);
         pm.registerEvents(new DamagesManager(), this);
+        pm.registerEvents(new DeathListener(), this);
     }
 
     private void registerCommands() {
