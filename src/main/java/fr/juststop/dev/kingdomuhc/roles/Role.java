@@ -2,6 +2,7 @@ package fr.juststop.dev.kingdomuhc.roles;
 
 import com.avaje.ebeaninternal.server.type.reflect.KnownImmutable;
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.enums.Camps;
@@ -58,4 +59,5 @@ public class Role {
     };
 
     public void runPassif() {};
+    public void playerDied(UhcPlayer player) {}
 }
