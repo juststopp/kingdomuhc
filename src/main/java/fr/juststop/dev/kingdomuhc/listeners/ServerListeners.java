@@ -1,9 +1,11 @@
 package fr.juststop.dev.kingdomuhc.listeners;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
-import fr.juststop.dev.kingdomuhc.items.zhao.Force;
+import fr.juststop.dev.kingdomuhc.items.zhao.bananji.Force;
+import fr.juststop.dev.kingdomuhc.items.zhao.toujou.Pleasure;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.roles.zhao.BaNanJi;
+import fr.juststop.dev.kingdomuhc.roles.zhao.TouJou;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.items.waiting.RolesBook;
 import fr.juststop.dev.kingdomuhc.utils.Language;
@@ -34,12 +36,12 @@ public class ServerListeners implements Listener {
         UhcPlayer uhcPlayer = new UhcPlayer(player);
         uhcPlayer.onJoin();
 
-        BaNanJi role = new BaNanJi();
+        TouJou role = new TouJou();
         uhcPlayer.setRole(role);
         KingdomUHC.getInstance().getGameManager().getRoles().add(role);
 
-        Force item = new Force(role);
-        uhcPlayer.getPlayer().getInventory().addItem(item.getItemStack());
+        Pleasure pleasure = new Pleasure(role);
+        uhcPlayer.getPlayer().getInventory().addItem(pleasure.getItemStack());
 
         KingdomUHC.getInstance().getGameManager().getPlayers().put(player, uhcPlayer);
         KingdomUHC.getInstance().getScoreboardManager().onLogin(uhcPlayer.getPlayer());

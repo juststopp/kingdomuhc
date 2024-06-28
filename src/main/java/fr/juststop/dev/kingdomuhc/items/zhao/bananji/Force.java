@@ -1,10 +1,9 @@
-package fr.juststop.dev.kingdomuhc.items.zhao;
+package fr.juststop.dev.kingdomuhc.items.zhao.bananji;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.roles.Role;
 import fr.juststop.dev.kingdomuhc.utils.Cooldown;
 import fr.juststop.dev.kingdomuhc.utils.Language;
-import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemClickHandler;
 import fr.juststop.dev.kingdomuhc.utils.inventory.handlers.CustomItemInteractHandler;
 import fr.juststop.dev.kingdomuhc.utils.items.GameItem;
 import org.bukkit.Material;
@@ -23,9 +22,6 @@ public class Force extends GameItem {
                 role
         );
     }
-
-    @Override
-    public void handleClick(CustomItemClickHandler handler) {  }
 
     @Override
     public void handleInteract(CustomItemInteractHandler handler) {

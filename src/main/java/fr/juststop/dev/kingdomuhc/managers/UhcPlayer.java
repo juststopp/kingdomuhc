@@ -19,15 +19,18 @@ import java.util.Map;
 public class UhcPlayer {
 
     private final Player player;
-    private Role role;
-    private List<String> actionBar = new ArrayList<>();
-    private List<Area> areas = new ArrayList<>();
-    private HashMap<ParticlePlace, Colors> particles = new HashMap<>();
+    private final List<String> actionBar = new ArrayList<>();
+    private final List<Area> areas = new ArrayList<>();
+    private final HashMap<ParticlePlace, Colors> particles = new HashMap<>();
+
     private int actionBarRunnable;
+    private int passifRunnable;
 
     private int speedPercentage;
     private int strengthPercentage;
     private int resistancePercentage;
+
+    private Role role;
 
     public UhcPlayer(Player player) {
         this.player = player;
@@ -36,7 +39,6 @@ public class UhcPlayer {
         this.speedPercentage = 0;
         this.strengthPercentage = 0;
         this.resistancePercentage = 0;
-
     }
 
     public Player getPlayer() { return player; }
@@ -56,7 +58,7 @@ public class UhcPlayer {
 
             @Override
             public void run() {
-                if(getActionBarAsString().length() > 0) new ActionBar(getActionBarAsString()).sendToPlayer(player);
+                if(!getActionBarAsString().isEmpty()) new ActionBar(getActionBarAsString()).sendToPlayer(player);
 
                 for(Map.Entry<ParticlePlace, Colors> entry : particles.entrySet()) {
                     ParticlesManager.spawnParticle(player.getLocation(), entry.getKey(), entry.getValue());
@@ -71,6 +73,13 @@ public class UhcPlayer {
     public void setRole(Role role) {
         this.role = role;
         role.setPlayer(player);
+
+        this.passifRunnable = new BukkitRunnable(){
+            @Override
+            public void run() {
+                role.runPassif();
+            }
+        }.runTaskTimer(KingdomUHC.getInstance(), 0, 20L).getTaskId();
     }
 
     public void clearActionBar() { this.actionBar.clear(); }

@@ -1,10 +1,14 @@
 package fr.juststop.dev.kingdomuhc.roles;
 
+import com.avaje.ebeaninternal.server.type.reflect.KnownImmutable;
+import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.enums.Camps;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class Role {
 
@@ -52,4 +56,6 @@ public class Role {
             }
         }
     };
+
+    public void runPassif() {};
 }
