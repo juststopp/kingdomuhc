@@ -61,21 +61,21 @@ public class Command implements CommandExecutor, TabCompleter {
                             .addText(new Language("commands.list_subcommands").getMessage().replace("%name%", this.name))
                             .sendMessage(player);
                     for(Map.Entry<String, Command> set : getSubcommands().entrySet()) {
-                        if(player.hasPermission(set.getValue().permission)) player.sendMessage(new Language("format.list_key_value").getMessage().replace("%key%", set.getKey()).replace("%value%", set.getValue().getDescription()));
+                        if(!Objects.equals(set.getValue().permission, "") && player.hasPermission(set.getValue().permission)) player.sendMessage(new Language("format.list_key_value").getMessage().replace("%key%", set.getKey()).replace("%value%", set.getValue().getDescription()));
                     }
                     return false;
                 }
 
                 while(true) {
                     if(command.getSubcommand(a[0]) == null) {
-                        if(player.hasPermission(this.permission)) command.run(player, a);
+                        if(Objects.equals(this.permission, "") || player.hasPermission(this.permission)) command.run(player, a);
                         else new MessageBuilder(new Language("error_prefix").getMessage())
                                 .addText(new Language("commands.no_perm").getMessage())
                                 .sendMessage(player);
                         break;
                     }
 
-                    if(!player.hasPermission(command.permission)) {
+                    if(Objects.equals(this.permission, "") && !player.hasPermission(command.permission)) {
                         new MessageBuilder(new Language("error_prefix").getMessage())
                                 .addText(new Language("commands.no_perm").getMessage())
                                 .sendMessage(player);

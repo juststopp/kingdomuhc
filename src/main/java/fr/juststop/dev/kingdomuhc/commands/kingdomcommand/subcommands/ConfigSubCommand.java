@@ -1,5 +1,6 @@
 package fr.juststop.dev.kingdomuhc.commands.kingdomcommand.subcommands;
 
+import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.commands.Command;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.Language;
@@ -15,5 +16,7 @@ public class ConfigSubCommand extends Command {
         new MessageBuilder(new Language("error_prefix").getMessage())
                 .addText(new Language("commands.not_implemented").getMessage())
                 .sendMessage(player);
+
+        KingdomUHC.getInstance().getGameManager().start();
     }
 }

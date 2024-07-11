@@ -18,7 +18,7 @@ public class DamagesManager implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
         if(!(event.getEntity() instanceof Player)) return;
-        if(KingdomUHC.getInstance().getGameManager().getConfig().GAME_TIMER < 300) { event.setCancelled(true); }
+        //if(KingdomUHC.getInstance().getGameManager().getConfig().GAME_TIMER < 300) { event.setCancelled(true); }
         else if((event.getCause() == EntityDamageEvent.DamageCause.LAVA
                 || event.getCause() == EntityDamageEvent.DamageCause.FIRE
                 || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)
@@ -26,7 +26,6 @@ public class DamagesManager implements Listener {
                 && event.getEntity().getLocation().getY() <= 30
         ) event.setCancelled(true);
         else if(event.getEntity().getType() == EntityType.PLAYER) {
-
             UhcPlayer player = KingdomUHC.getInstance().getGameManager().getPlayers().get(event.getEntity());
 
             if(player.getAreas().isEmpty()) return;

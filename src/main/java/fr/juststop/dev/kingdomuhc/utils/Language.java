@@ -100,7 +100,7 @@ public class Language {
 
     public String getMessage() {
         Object value = get(path);
-        return value instanceof String ? (String) value : "&7Message \"&c" + path + "&7\" introuvable.";
+        return value instanceof String ? (String) value : "§7Message \"§c" + path + "§7\" introuvable.";
     }
 
     @SuppressWarnings("unchecked")

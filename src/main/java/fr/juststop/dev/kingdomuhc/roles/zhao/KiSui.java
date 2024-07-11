@@ -11,8 +11,7 @@ public class KiSui extends Role {
         super(
                 new Language("roles.zhao.kisui.name").getMessage(),
                 Camps.ZHAO,
-                new Language("roles.zhao.kisui.short_desc").getAsList(),
-                new Language("roles.zhao.kisui.long_desc").getMessage()
+                new Language("roles.zhao.kisui.long_desc").getAsList()
         );
     }
 

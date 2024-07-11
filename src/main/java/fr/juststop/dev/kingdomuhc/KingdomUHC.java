@@ -37,7 +37,6 @@ public final class KingdomUHC extends JavaPlugin {
     static KingdomUHC instance;
 
     private Logger logger;
-    private final String prefix = "&6Kingdom &8︲ &r";
 
     private HashMap<String, Command> commands;
 
@@ -74,7 +73,6 @@ public final class KingdomUHC extends JavaPlugin {
 
         worldManager.replaceBiomes();
         new WorldParticlesScheduler().runTaskTimer(this, 0L, 5L);
-
     }
 
     @Override
@@ -82,7 +80,6 @@ public final class KingdomUHC extends JavaPlugin {
 
     public static KingdomUHC getInstance() { return instance; }
     public Logger getLog() { return logger; }
-    public String getPrefix() { return prefix; }
     public HashMap<String, Command> getCommands() { return commands; }
 
     public ScheduledExecutorService getExecutorMonoThread() { return executorMonoThread; }

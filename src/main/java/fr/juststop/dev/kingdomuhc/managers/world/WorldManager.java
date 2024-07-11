@@ -1,12 +1,15 @@
 package fr.juststop.dev.kingdomuhc.managers.world;
 
+import fr.juststop.dev.kingdomuhc.KingdomUHC;
+import fr.juststop.dev.kingdomuhc.managers.game.GameConfig;
 import fr.juststop.dev.kingdomuhc.utils.Utils;
 import net.minecraft.server.v1_8_R3.BiomeBase;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.Arrays;
 
 public class WorldManager {

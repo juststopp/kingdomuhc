@@ -43,13 +43,13 @@ public class GameItem extends CustomInventoryItem {
         UhcPlayer uhcPlayer = KingdomUHC.getInstance().getGameManager().getPlayers().get(handler.getEvent().getPlayer());
         if(this.roleNeeded != null && !uhcPlayer.getRole().getName().equalsIgnoreCase(this.roleNeeded.getName())) {
             new MessageBuilder(new Language("error_prefix").getMessage())
-                    .addText(new Language("item.not_yours").getMessage())
+                    .addText(new Language("items.not_yours").getMessage())
                     .sendMessage(uhcPlayer.getPlayer());
 
             handler.setCancelled(true);
         }
 
-        if(this.cooldown.isActive()) {
+        if(!handler.isCancelled() && this.cooldown.isActive()) {
             new MessageBuilder(new Language("error_prefix").getMessage())
                     .addText(new Language("items.cooldown").getMessage().replace("%cooldown%", Long.toString(this.getCooldown().getRemaining())))
                     .sendMessage(uhcPlayer.getPlayer());

@@ -46,7 +46,6 @@ public class RolesBook extends GameItem {
                     new CustomInventoryItem(
                             new ItemBuilder(new ItemStack(Material.PAPER))
                                     .setName(role.getColoredName())
-                                    .addLoreLines(role.getShortDescription())
                                     .getItemStack(),
                             i
                     ) {

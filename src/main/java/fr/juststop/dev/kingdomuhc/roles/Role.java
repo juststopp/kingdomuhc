@@ -15,15 +15,13 @@ public class Role {
 
     private final String name;
     private final Camps camp;
-    private final String[] shortDescription;
-    private final String longDescription;
+    private final String[] longDescription;
     private Player player;
 
-    public Role(String name, Camps camp, String[] shortDescription, String longDescription) {
+    public Role(String name, Camps camp, String[] longDescription) {
 
         this.name = name;
         this.camp = camp;
-        this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.player = null;
 
@@ -32,8 +30,7 @@ public class Role {
     public String getName() { return name; }
     public String getColoredName() { return camp.getColor().getChatColor() + name; }
     public Camps getCamp() { return camp; }
-    public String[] getShortDescription() { return shortDescription; }
-    public String getLongDescription() { return longDescription; }
+    public String[] getLongDescription() { return longDescription; }
     public Player getPlayer() { return player; }
 
     public void setPlayer(Player player) {
@@ -45,8 +42,8 @@ public class Role {
     public void handleNight() {};
 
     public void init(boolean ignoreEffects) {
-        for(String msg : Language.splitLore(this.getLongDescription())) {
-            new MessageBuilder(new Language("prefix").getMessage())
+        for(String msg : this.getLongDescription()) {
+            new MessageBuilder(" ")
                     .addText(msg)
                     .sendMessage(this.getPlayer());
         }

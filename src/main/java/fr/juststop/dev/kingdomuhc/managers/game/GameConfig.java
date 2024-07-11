@@ -16,15 +16,20 @@ public class GameConfig {
     public Integer SLOTS = 60;
 
     public GameStatus GAME_STATUS = GameStatus.WAITING;
-    public BorderStatus BORDER_STATS = BorderStatus.FIXED;
+    public BorderStatus BORDER_STATUS = BorderStatus.FIXED;
     public PvPStatus PVP_STATUS = PvPStatus.DISABLED;
     public RolesStatus ROLES_STATUS = RolesStatus.WAITING;
     public MapStatus MAP_STATUS = MapStatus.NONE;
 
+    public boolean NON_PLAYER_SPECTATORS_ALLOWED = false;
+
+    public Integer START_BORDER = 2000;
+    public Integer END_BORDER = 500;
+
     public Integer GAME_TIMER = 0;
     public Integer BORDER_TIMER = 60 * 90; // 1h30
     public Integer PVP_TIMER = 60 * 20; // 20m
-    public Integer ROLES_TIMER = 60 * 20; // 20m
+    public Integer ROLES_TIMER = 60; // 20m
 
     public List<Role> ENABLED_ROLES = new ArrayList<>(); // Liste des rôles ajoutés à la compo.
     public List<Scenarios> ENABLED_SCENARIOS = new ArrayList<>(); // Liste des scénarios ajoutés.

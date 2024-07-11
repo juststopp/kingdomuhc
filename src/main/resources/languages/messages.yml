@@ -4,74 +4,83 @@ error_prefix: "§cErreur §8︲ §r"
 server:
   events:
     player:
-      join: "%prefix%§a%player% §7vient de rejoindre la partie."
-      quit: "%prefix%§c%player% §7vient de quitter la partie."
+      join: "%prefix%§a%player% §fvient de rejoindre la partie."
+      quit: "%prefix%§c%player% §fvient de quitter la partie."
+      no_specs: "%error_prefix%§cLes spectateurs non joueurs ne sont pas autorisés."
 
 
 game:
-  start: "§aLancement de la partie. §7Ne vous déconnectez pas!"
+  start: "§aLancement de la partie. §fNe vous déconnectez pas!"
   stop: "§cLa partie est terminée, le serveur va bientôt s'arrêter."
   host:
-    you_are_new: "§7Vous êtes désormais l'§6Host §7de la partie."
+    you_are_new: "§fVous êtes désormais l'§6Host §fde la partie."
+  starting:
+    action_bar: "§fTéléportation de §e%player%§f.."
 
 format:
-  list_key_value: "§8- §6%key%§7: %value%"
+  list_key_value: "§8- §6%key%§f: %value%"
   list_value: "§8- %6%value%"
+
+timers:
+  roles:
+    left: "§fAnnonce des rôles dans §6%left%§f."
+  pvp:
+    activated: "§fLe PvP est désormais §aactivé §f!"
 
 commands:
   not_implemented: "§cCette commande n'a pas encore été implémentée."
-  list_subcommands: "§7Voici la liste des sous-commandes pour '§6%name%§7' que §7vous pouvez utiliser:"
+  list_subcommands: "§fVoici la liste des sous-commandes pour '§6%name%§f' que §fvous pouvez utiliser:"
   no_perm: "§cVous n'avez pas la permission d'executer cette commande."
   kingdom:
-    description: "§7Ceci est la commande §6principale §7du mode de jeu. §7Faîtes §6/kingdom help §7pour voir la liste des commandes."
+    description: "§fCeci est la commande §6principale §fdu mode de jeu. §fFaîtes §6/kingdom help §fpour voir la liste des commandes."
     subcommands:
       help:
-        description: "§7Liste les commandes disponibles."
-        message: "§7Voici la liste des sous-commandes que vous pouvez §7utiliser:"
+        description: "§fListe les commandes disponibles."
+        message: "§fVoici la liste des sous-commandes que vous pouvez §futiliser:"
       config:
-        description: "§7Permet de voir la §6configuration §7de la partie."
+        description: "§fPermet de voir la §6configuration §fde la partie."
       effects:
-        description: "§7Montre la liste des effets du joueur."
+        description: "§fMontre la liste des effets du joueur."
         message:
           - "§1"
-          - "  §f§l︲ §7Voici vos effets:"
+          - "  §f§l︲ §fVoici vos effets:"
           - "§2"
-          - "  §f§l︲ §bVitesse§7: §b%speed%% §7(Niveau 1 = 20%)"
-          - "  §f§l︲ §cForce§7: §c%strength%% §7(Niveau 1 = 20%)"
-          - "  §f§l︲ §1Résistance§7: §1%resistance%% §7(Niveau 1 = 20%)"
+          - "  §f§l︲ §bVitesse§f: §b%speed%% §f(Niveau 1 = 20%)"
+          - "  §f§l︲ §cForce§f: §c%strength%% §f(Niveau 1 = 20%)"
+          - "  §f§l︲ §1Résistance§f: §1%resistance%% §f(Niveau 1 = 20%)"
           - "§3"
       role:
-        description: "§7Affiche le rôle actuel du joueur."
+        description: "§fAffiche le rôle actuel du joueur."
   world:
-    description: "§7Permet de gérer la génération du monde."
-    message: "§7Voici la liste des commandes utilisables:"
+    description: "§fPermet de gérer la génération du monde."
+    message: "§fVoici la liste des commandes utilisables:"
     subcommands:
       load:
-        description: "§7Lance la §bpré-génération §7du monde."
-        starting: "§7Lancement de la §bpré-génération §7de la map..."
-        ended: "§7La §bpré-génération §7de la map est terminée."
+        description: "§fLance la §bpré-génération §fdu monde."
+        starting: "§fLancement de la §bpré-génération §fde la map..."
+        ended: "§fLa §bpré-génération §fde la map est terminée."
       create:
-        description: "§7Permet de générer un nouveau monde pour la partie."
-        sure: "§7Etes vous sûr de vouloir régénérer le monde ?"
-        yes: "§aOui§7, régénérer."
+        description: "§fPermet de générer un nouveau monde pour la partie."
+        sure: "§fEtes vous sûr de vouloir régénérer le monde ?"
+        yes: "§aOui§f, régénérer."
         subcommands:
           confirm:
-            description: "§7Confirmer la §arégénération §7du monde."
-            creating: "§7Création du nouveau monde en cours..."
-            created: "§7Le monde a été créé. Voici les actions disponibles:"
+            description: "§fConfirmer la §arégénération §fdu monde."
+            creating: "§fCréation du nouveau monde en cours..."
+            created: "§fLe monde a été créé. Voici les actions disponibles:"
             actions:
-              delete_and_create: "§cSupprimer §7le monde actuel et le §arecréer§7."
-              save_and_load: "§aGarder §7le monde actuel et lancer la §bpré-génération§7."
+              delete_and_create: "§cSupprimer §fle monde actuel et le §arecréer§f."
+              save_and_load: "§aGarder §fle monde actuel et lancer la §bpré-génération§f."
   language:
-    description: "§7Permet de gérer les messages en jeu."
+    description: "§fPermet de gérer les messages en jeu."
     subcommands:
       reload:
-        description: "§7Permet de recharger les messages depuis le fichier de configuration."
-        message: "§7Les messages ont été §achargés§7."
+        description: "§fPermet de recharger les messages depuis le fichier de configuration."
+        message: "§fLes messages ont été §achargés§f."
 
 items:
-  activated: "§7Vous avez §aactivé §7votre pouvoir \"%item_name%§7\"."
-  finished: "§7Votre pouvoir \"%item_name%§7\" vient de se §cterminer§7."
+  activated: "§fVous avez §aactivé §fvotre pouvoir \"%item_name%§f\"."
+  finished: "§fVotre pouvoir \"%item_name%§f\" vient de se §cterminer§f."
   not_yours: "§cVous ne pouvez pas utiliser cet item."
   not_in_area: "§cCet item n'est utilsable que dans la zone."
   no_target: "§cVous ne visez personne."
@@ -80,34 +89,34 @@ items:
     name: "§eComposition"
     desc:
       - "§1"
-      - "§f§l︲ §7Permet de voir la liste des rôles"
-      - "§7présents dans la configuration de la"
-      - "§7partie."
+      - "§f§l︲ §fPermet de voir la liste des rôles"
+      - "§fprésents dans la configuration de la"
+      - "§fpartie."
       - "§2"
-      - "§f§l︲ §e§nClique droit§7: Ouvrir le menu."
+      - "§f§l︲ §e§nClique droit§f: Ouvrir le menu."
   roles:
     bananji:
       force:
         name: "§cForce"
         desc:
           - "§1"
-          - "§f§l︲ §7Obtient les effets §cForce 2"
-          - "§7et §8Slowness 1 §7pendant §a1 §7minute."
+          - "§f§l︲ §fObtient les effets §cForce 2"
+          - "§fet §8Slowness 1 §fpendant §a1 §fminute."
           - "§2"
-          - "§f§l︲ §e§nClique droit§7: Activer le pouvoir"
-          - "§f§l︲ §e§nCooldown§7: §a5 minutes§7."
+          - "§f§l︲ §e§nClique droit§f: Activer le pouvoir"
+          - "§f§l︲ §e§nCooldown§f: §a5 minutes§f."
     toujou:
       pleasure:
         name: "§ePleasure"
         desc:
           - "§1"
-          - "§f§l︲ §7Obtient l'effet §dRégénération 1"
-          - "§7pendant §a1 minute 30§7. Tous les joueurs"
-          - "§7dans un rayon de §a30 blocs §7obtiennent"
-          - "§8Slowness 1 §7pendant cette durée."
+          - "§f§l︲ §fObtient l'effet §dRégénération 1"
+          - "§fpendant §a1 minute 30§f. Tous les joueurs"
+          - "§fdans un rayon de §a30 blocs §fobtiennent"
+          - "§8Slowness 1 §fpendant cette durée."
           - "§2"
-          - "§f§l︲ §e§nClique droit§7: Activer le pouvoir"
-          - "§f§l︲ §e§nCooldown§7: §a7 minutes§7."
+          - "§f§l︲ §e§nClique droit§f: Activer le pouvoir"
+          - "§f§l︲ §e§nCooldown§f: §a7 minutes§f."
 
 
 roles:
@@ -118,22 +127,42 @@ roles:
       long_desc: "§cDescription introuvable."
       short_desc:
         - "§1"
-        - "§f§l︲ §7Camp: §cZhao"
-        - "§f§l︲ §7Status: §e?"
+        - "§f§l︲ §fCamp: §cZhao"
+        - "§f§l︲ §fStatus: §e?"
     bananji:
       name: "Ba Nan Ji"
+      long_desc:
+        - "§f§m-------------------------------------------"
+        - ""
+        - "§8︲ §fVous êtes §cBa Nan Ji §f!"
+        - "§8︲ §fVous devez gagner avec §cZhao&7."
+        - " "
+        - "§f§lEffets:"
+        - "§8︲ §fVous possédez l'effet §cForce 1 §fde façon permanente."
+        - " "
+        - "§f§lItems:"
+        - "§8︲ §cForce§f: §e§o(x1/5mn)"
+        - "§8︲ §fCet item vous donne les effets §cForce II &7ainsi que §8Slowness I §fpendant §a1 §fminute."
+        - ""
+        - "§f§m-------------------------------------------"
+      short_desc:
+        - "§1"
+        - "§f§l︲ §fCamp: §cZhao"
+        - "§f§l︲ §fStatut: §e?"
+    toujou:
+      name: "Tou Jou"
       long_desc: "§cDescription introuvable."
       short_desc:
         - "§1"
-        - "§f§l︲ §7Camp: §cZhao"
-        - "§f§l︲ §7Statut: §e?"
-    toujou:
-      name: "Tou Jou"
-      long_desc: "§cDescription introuvable"
+        - "§f§l︲ §fCamp: §cZhao"
+        - "§f§l︲ §fStatut: §eRoi"
+    kisui:
+      name: "Ki Sui"
+      long_desc: "§cDescription introuvable."
       short_desc:
         - "§1"
-        - "§f§l︲ §7Camp: §cZhao"
-        - "§f§l︲ §7Statut: §eRoi"
+        - "§f§l︲ §fCamp: §cZhao"
+        - "§f§l︲ §fStatut: §c?"
 
 gui:
   next_page: "§cPage suivante"

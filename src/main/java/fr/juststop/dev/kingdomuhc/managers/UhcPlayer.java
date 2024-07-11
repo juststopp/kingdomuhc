@@ -2,19 +2,20 @@ package fr.juststop.dev.kingdomuhc.managers;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.managers.areas.Area;
+import fr.juststop.dev.kingdomuhc.managers.game.GameConfig;
 import fr.juststop.dev.kingdomuhc.managers.particles.ParticlesManager;
 import fr.juststop.dev.kingdomuhc.roles.Role;
 import fr.juststop.dev.kingdomuhc.utils.ActionBar;
 import fr.juststop.dev.kingdomuhc.utils.enums.Colors;
 import fr.juststop.dev.kingdomuhc.utils.enums.ParticlePlace;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class UhcPlayer {
 
@@ -31,6 +32,7 @@ public class UhcPlayer {
     private int resistancePercentage;
 
     private Role role;
+    private boolean alive;
 
     public UhcPlayer(Player player) {
         this.player = player;
@@ -39,6 +41,8 @@ public class UhcPlayer {
         this.speedPercentage = 0;
         this.strengthPercentage = 0;
         this.resistancePercentage = 0;
+
+        this.alive = true;
     }
 
     public Player getPlayer() { return player; }
@@ -70,6 +74,22 @@ public class UhcPlayer {
 
     public void onQuit() { Bukkit.getScheduler().cancelTask(this.actionBarRunnable); }
 
+    public void died() {
+        Bukkit.getScheduler().cancelTask(this.passifRunnable);
+
+        Location loc = this.getPlayer().getLocation();
+
+        this.getPlayer().spigot().respawn();
+        this.getPlayer().setGameMode(GameMode.SPECTATOR);
+        this.getPlayer().teleport(loc);
+
+        this.alive = false;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
     public void setRole(Role role) {
         this.role = role;
         role.setPlayer(player);
@@ -90,4 +110,17 @@ public class UhcPlayer {
     }
     public void setStrengthPercentage(int percentage) { this.strengthPercentage = percentage; }
     public void setResistancePercentage(int percentage) { this.resistancePercentage = percentage; }
+
+    public void randomTeleport(World world) {
+        GameConfig config = KingdomUHC.getInstance().getGameManager().getConfig();
+
+        Random random = new Random();
+
+        int x = random.nextInt(config.START_BORDER) - config.START_BORDER / 2;
+        int z = random.nextInt(config.START_BORDER) - config.START_BORDER / 2;
+        int y = world.getHighestBlockYAt(x, z);
+
+        Location loc = new Location(world, x, y, z);
+        this.getPlayer().teleport(loc);
+    }
 }

@@ -4,9 +4,10 @@ import fr.juststop.dev.kingdomuhc.managers.particles.ParticleCircle;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.Vector;
 import xyz.xenondevs.particle.ParticleBuilder;
-import xyz.xenondevs.particle.ParticleEffect;
 
 import java.io.File;
 
@@ -55,6 +56,36 @@ public class Utils {
 
         return null;
 
+    }
+
+    public static void addItemIfPlayerNotHas(Player player, ItemStack item) {
+        for(ItemStack itemStack : player.getInventory().getContents()) {
+            if(itemStack != null
+                    && itemStack.getItemMeta() != null
+                    && itemStack.getItemMeta().getDisplayName() != null
+                    && item.getItemMeta().getDisplayName().equals(itemStack.getItemMeta().getDisplayName())
+            ) {
+                return;
+            }
+        }
+
+        player.getInventory().addItem(item);
+    }
+
+    public static void clearPotionEffects(Player player) {
+        for(PotionEffect potionEffect : player.getActivePotionEffects()) {
+            player.removePotionEffect(potionEffect.getType());
+        }
+    }
+
+    public static String formatDuration(int seconds) {
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        int remaining = seconds % 60;
+
+        if (hours > 0) return String.format("§e%d§6:§e%d§6:§e%d", hours, minutes, remaining);
+        else if (minutes > 0) return String.format("§e%d§6:§e%d", minutes, remaining);
+        else return String.format("§e%ds", remaining);
     }
 
 }
