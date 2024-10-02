@@ -1,14 +1,11 @@
 package fr.juststop.dev.kingdomuhc.listeners;
 
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
-import fr.juststop.dev.kingdomuhc.items.zhao.bananji.Force;
-import fr.juststop.dev.kingdomuhc.items.zhao.toujou.Pleasure;
+import fr.juststop.dev.kingdomuhc.items.waiting.host.Config;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.managers.game.GameConfig;
 import fr.juststop.dev.kingdomuhc.managers.game.GameManager;
 import fr.juststop.dev.kingdomuhc.roles.zhao.BaNanJi;
-import fr.juststop.dev.kingdomuhc.roles.zhao.KiSui;
-import fr.juststop.dev.kingdomuhc.roles.zhao.TouJou;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.items.waiting.RolesBook;
 import fr.juststop.dev.kingdomuhc.utils.Language;
@@ -50,13 +47,16 @@ public class ServerListeners implements Listener {
             player.setGameMode(GameMode.SURVIVAL);
             Utils.clearPotionEffects(player);
 
-            player.teleport(new Location(Bukkit.getWorld("world"), 0.5, 203, 0.5));
+            player.teleport(new Location(Bukkit.getWorld("world"), 0.5, 210, 0.5));
 
             RolesBook book = new RolesBook();
             player.getInventory().setItem(book.getSlot(), book.getItemStack());
 
             if(config.HOST == null && player.isOp()) {
                 config.HOST = player;
+
+                Config configItem = new Config();
+                player.getInventory().setItem(configItem.getSlot(), configItem.getItemStack());
 
                 new MessageBuilder(new Language("prefix").getMessage())
                         .addText(new Language("game.host.you_are_new").getMessage())

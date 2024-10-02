@@ -11,12 +11,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.text.DecimalFormat;
-import java.util.Date;
 import java.util.Map;
 
 public class ChunkLoader extends BukkitRunnable {
-
-    private final Date start;
 
     private double percent;
 
@@ -46,14 +43,15 @@ public class ChunkLoader extends BukkitRunnable {
         this.world.setGameRuleValue("naturalRegeneration", "false");
         this.radius = radius;
         this.finished = false;
+
         runTaskTimer(KingdomUHC.getInstance(), 0L, 5L);
-        this.start = new Date();
     }
 
     public void run() {
         for (int i = 0; i < 30 && !this.finished; i++) {
             Location loc = new Location(this.world, this.cx, 0.0D, this.cz);
             loc.getChunk().load(true);
+            loc.getWorld().loadChunk(loc.getChunk());
             this.cx += 16;
             this.currentChunkLoad++;
             if (this.cx > this.radius) {

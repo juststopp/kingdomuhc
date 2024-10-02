@@ -15,6 +15,8 @@ import org.bukkit.potion.PotionEffectType;
 
 public class TouJou extends Role {
 
+    private final Pleasure pleasureItem = new Pleasure(this);
+
     public TouJou() {
         super(
                 new Language("roles.zhao.toujou.name").getMessage(),
@@ -27,8 +29,7 @@ public class TouJou extends Role {
     public void init(boolean ignoreEffects) {
         super.init(ignoreEffects);
 
-        Pleasure pleasure = new Pleasure(this);
-        Utils.addItemIfPlayerNotHas(this.getPlayer(), pleasure.getItemStack());
+        Utils.addItemIfPlayerNotHas(this.getPlayer(), pleasureItem.getItemStack());
     }
 
     @Override

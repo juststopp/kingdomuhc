@@ -16,6 +16,9 @@ game:
     you_are_new: "§fVous êtes désormais l'§6Host §fde la partie."
   starting:
     action_bar: "§fTéléportation de §e%player%§f.."
+  errors:
+    started: "§cLa partie a déjà été lancée."
+    map_unloaded: "§cLa map n'est pas créée."
 
 format:
   list_key_value: "§8- §6%key%§f: %value%"
@@ -94,6 +97,13 @@ items:
       - "§fpartie."
       - "§2"
       - "§f§l︲ §e§nClique droit§f: Ouvrir le menu."
+  config:
+    name: "§cConfiguration"
+    desc:
+      - "§1"
+      - "§f§l︲ §fOuvre le menu de §cconfiguration§f."
+      - "§2"
+      - "§f§l︲ §e§nClique droit§f: §aOuvrir"
   roles:
     bananji:
       force:
@@ -103,7 +113,7 @@ items:
           - "§f§l︲ §fObtient les effets §cForce 2"
           - "§fet §8Slowness 1 §fpendant §a1 §fminute."
           - "§2"
-          - "§f§l︲ §e§nClique droit§f: Activer le pouvoir"
+          - "§f§l︲ §e§nClique droit§f: §aActiver le pouvoir"
           - "§f§l︲ §e§nCooldown§f: §a5 minutes§f."
     toujou:
       pleasure:
@@ -115,7 +125,7 @@ items:
           - "§fdans un rayon de §a30 blocs §fobtiennent"
           - "§8Slowness 1 §fpendant cette durée."
           - "§2"
-          - "§f§l︲ §e§nClique droit§f: Activer le pouvoir"
+          - "§f§l︲ §e§nClique droit§f: §aActiver le pouvoir"
           - "§f§l︲ §e§nCooldown§f: §a7 minutes§f."
 
 
@@ -142,7 +152,7 @@ roles:
         - " "
         - "§f§lItems:"
         - "§8︲ §cForce§f: §e§o(x1/5mn)"
-        - "§8︲ §fCet item vous donne les effets §cForce II &7ainsi que §8Slowness I §fpendant §a1 §fminute."
+        - "§8︲ §fCet item vous donne les effets §cForce II §fainsi que §8Slowness I §fpendant §a1 §fminute."
         - ""
         - "§f§m-------------------------------------------"
       short_desc:
@@ -168,3 +178,8 @@ gui:
   next_page: "§cPage suivante"
   list_roles:
     name: "§eListe des roles"
+  config:
+    main:
+      name: "§cConfiguration"
+      items:
+        start: "§aLancer la partie"

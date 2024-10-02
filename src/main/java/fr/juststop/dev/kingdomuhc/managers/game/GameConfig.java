@@ -29,7 +29,7 @@ public class GameConfig {
     public Integer GAME_TIMER = 0;
     public Integer BORDER_TIMER = 60 * 90; // 1h30
     public Integer PVP_TIMER = 60 * 20; // 20m
-    public Integer ROLES_TIMER = 60; // 20m
+    public Integer ROLES_TIMER = 10; // 20m
 
     public List<Role> ENABLED_ROLES = new ArrayList<>(); // Liste des rôles ajoutés à la compo.
     public List<Scenarios> ENABLED_SCENARIOS = new ArrayList<>(); // Liste des scénarios ajoutés.

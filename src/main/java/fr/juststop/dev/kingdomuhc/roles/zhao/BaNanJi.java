@@ -12,6 +12,8 @@ import org.bukkit.potion.PotionEffectType;
 
 public class BaNanJi extends Role {
 
+    private final Force forceItem = new Force(this);
+
     public BaNanJi() {
         super(
                 new Language("roles.zhao.bananji.name").getMessage(),
@@ -25,8 +27,7 @@ public class BaNanJi extends Role {
         super.init(ignoreEffects);
         this.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 99999, 0, true, false));
 
-        Force force = new Force(this);
-        Utils.addItemIfPlayerNotHas(this.getPlayer(), force.getItemStack());
+        Utils.addItemIfPlayerNotHas(this.getPlayer(), forceItem.getItemStack());
 
         for(Role role : KingdomUHC.getInstance().getGameManager().getRoles()) {
             if(role.getName().equalsIgnoreCase(new Language("roles.zhao.riboku.name").getMessage())) {

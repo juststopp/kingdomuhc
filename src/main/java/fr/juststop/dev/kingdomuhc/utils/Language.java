@@ -35,7 +35,6 @@ public class Language {
             InputStream inputStream = Files.newInputStream(Paths.get(languageFile.getAbsolutePath()));
             messages = (Map<String, Object>) yaml.load(inputStream);
 
-            // Placeholder replacement can be done here if necessary
             replacePlaceholders(messages);
 
         } catch (Exception e) {
@@ -73,7 +72,6 @@ public class Language {
     private static String getPrefix() {
         return (String) messages.getOrDefault("prefix", "&7");
     }
-
     private static String getErrorPrefix() {
         return (String) messages.getOrDefault("error_prefix", "&c");
     }

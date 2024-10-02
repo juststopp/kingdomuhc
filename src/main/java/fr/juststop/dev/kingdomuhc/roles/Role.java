@@ -6,10 +6,13 @@ import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.utils.MessageBuilder;
 import fr.juststop.dev.kingdomuhc.utils.Language;
 import fr.juststop.dev.kingdomuhc.utils.enums.Camps;
+import fr.juststop.dev.kingdomuhc.utils.items.GameItem;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.ArrayList;
 
 public class Role {
 
@@ -17,6 +20,7 @@ public class Role {
     private final Camps camp;
     private final String[] longDescription;
     private Player player;
+    private ArrayList<GameItem> items;
 
     public Role(String name, Camps camp, String[] longDescription) {
 
@@ -32,6 +36,10 @@ public class Role {
     public Camps getCamp() { return camp; }
     public String[] getLongDescription() { return longDescription; }
     public Player getPlayer() { return player; }
+
+    public void addItem(GameItem item) { items.add(item); }
+    public void removeItem(GameItem item) { items.remove(item); }
+    public boolean hasItem(GameItem item) { return items.contains(item); }
 
     public void setPlayer(Player player) {
         this.player = player;

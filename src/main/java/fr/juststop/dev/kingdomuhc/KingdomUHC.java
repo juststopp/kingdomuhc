@@ -76,7 +76,9 @@ public final class KingdomUHC extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() { getScoreboardManager().onDisable(); }
+    public void onDisable() {
+        getScoreboardManager().onDisable();
+    }
 
     public static KingdomUHC getInstance() { return instance; }
     public Logger getLog() { return logger; }

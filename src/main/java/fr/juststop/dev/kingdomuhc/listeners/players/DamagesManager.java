@@ -3,6 +3,8 @@ package fr.juststop.dev.kingdomuhc.listeners.players;
 import fr.juststop.dev.kingdomuhc.KingdomUHC;
 import fr.juststop.dev.kingdomuhc.managers.UhcPlayer;
 import fr.juststop.dev.kingdomuhc.managers.areas.Area;
+import fr.juststop.dev.kingdomuhc.managers.game.GameManager;
+import fr.juststop.dev.kingdomuhc.utils.enums.GameStatus;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -18,7 +20,10 @@ public class DamagesManager implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
         if(!(event.getEntity() instanceof Player)) return;
-        //if(KingdomUHC.getInstance().getGameManager().getConfig().GAME_TIMER < 300) { event.setCancelled(true); }
+
+        GameManager gameManager = KingdomUHC.getInstance().getGameManager();
+        if(gameManager.getConfig().GAME_STATUS != GameStatus.INGAME) { event.setCancelled(true); }
+        else if(gameManager.getConfig().GAME_TIMER < 300) { event.setCancelled(true); }
         else if((event.getCause() == EntityDamageEvent.DamageCause.LAVA
                 || event.getCause() == EntityDamageEvent.DamageCause.FIRE
                 || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)
@@ -26,7 +31,7 @@ public class DamagesManager implements Listener {
                 && event.getEntity().getLocation().getY() <= 30
         ) event.setCancelled(true);
         else if(event.getEntity().getType() == EntityType.PLAYER) {
-            UhcPlayer player = KingdomUHC.getInstance().getGameManager().getPlayers().get(event.getEntity());
+            UhcPlayer player = gameManager.getPlayers().get((Player) event.getEntity());
 
             if(player.getAreas().isEmpty()) return;
 
@@ -62,7 +67,6 @@ public class DamagesManager implements Listener {
                 for(PotionEffect effect : victim.getPlayer().getActivePotionEffects()) {
                     if(effect.getType().equals(PotionEffectType.DAMAGE_RESISTANCE)) {
                         finalDamages = finalDamages - originalDamages * (0.2 * effect.getAmplifier());
-                        Bukkit.broadcastMessage("Après résistance: "  + finalDamages);
                     }
                 }
 
